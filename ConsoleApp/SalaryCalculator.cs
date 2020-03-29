@@ -9,15 +9,19 @@ namespace ConsoleApp
         //20 anställda
         private const int Employees = 20;
 
-        //lön per timma
+        //Lön per timma
         private const int SalaryPerHour = 100;
-        //grundlön per månad
+        //Grundlön per månad
         private const int SalaryPerMonth = 20000;
         
         private static string[] employeeNames = new string[20];
         private static int[] months = new int[20];
         private static int[] hours = new int[20];
-        //
+        
+        // Instantiate random number generator using system-supplied value as seed.
+        //https://docs.microsoft.com/en-us/dotnet/api/system.random?view=netcore-3.1
+        static Random random = new Random();
+
         // static Employee[] employees = new Employee[20];
         // struct Employee
         // {
@@ -32,16 +36,6 @@ namespace ConsoleApp
         //     private int Months { get; }
         //     private int Hours { get; }
         // }
-
-        //Skriv ut namn, arbetstid och lön för månaden
-
-        //Totalsumma löner
-
-        //Hitta de 3 anställda med högst lön. //Skriv ut sparad lönesumma och antal timmar.
-
-        // Instantiate random number generator using system-supplied value as seed.
-        //https://docs.microsoft.com/en-us/dotnet/api/system.random?view=netcore-3.1
-        static Random random = new Random();
 
         public static void Main(string[] args)
         {
@@ -186,5 +180,8 @@ namespace ConsoleApp
             int[] toplist = new int[3] {first, second, third};
             return toplist;
         }
+        
+        
+        
     }
 }
