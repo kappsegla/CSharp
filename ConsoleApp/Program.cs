@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ConsoleApp
 {
@@ -6,37 +7,57 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            int k = 10;
-
             //Create an object of type Rectangle
             Rectangle rectangle = new Rectangle();
 
-            rectangle.height = 10;
-            rectangle.width = 5;
+            //Set values with Properties
+            rectangle.Height = 10;
+            rectangle.Width = 5;
+            rectangle.Color = "Red";
+           
+            int area = rectangle.Area();
+
+            //Use object initializers
+            Rectangle rectangle2 = new Rectangle {Height = 10, Width = 5, Color = "Red"};
+
+            //Use Constructor for initialization
+            Rectangle rectangle3 = new Rectangle(10, 5, "Red");
             
-            Rectangle rectangle1 = new Rectangle();
 
-            rectangle1.height = 20;
-            rectangle1.width = 30;
 
-            Console.WriteLine(rectangle.height);
-            Console.WriteLine(rectangle1.height);
 
-            int[] array = new int[10];
-            Rectangle[] rectangles = new Rectangle[10];
 
-            array[0] = 20;
 
-            //Arrays of Rectangles is just an array of Rectangle references, initiated to null. Loop and create the Rectangle objects.
-            for (int i = 0; i < rectangles.Length; i++)
-            {
-                rectangles[i] = new Rectangle();
-                rectangles[i].height = 20;
-            }
 
-            //If you set all references pointing to an object to null the garbage collector can free the memory and remove the object.
-            rectangle = null;
-
+            //
+            //
+            // rectangle.width = 5;
+            //
+            // Rectangle rectangle1 = new Rectangle();
+            //
+            // rectangle1.SetHeight(20);
+            // rectangle1.width = 30;
+            //
+            //
+            //
+            // Console.WriteLine(rectangle.height);
+            // Console.WriteLine(rectangle1.height);
+            //
+            // int[] array = new int[10];
+            // Rectangle[] rectangles = new Rectangle[10];
+            //
+            // array[0] = 20;
+            //
+            // //Arrays of Rectangles is just an array of Rectangle references, initiated to null. Loop and create the Rectangle objects.
+            // for (int i = 0; i < rectangles.Length; i++)
+            // {
+            //     rectangles[i] = new Rectangle();
+            //     rectangles[i].height = 20;
+            // }
+            //
+            // //If you set all references pointing to an object to null the garbage collector can free the memory and remove the object.
+            // rectangle = null;
+            //
 
 
 
