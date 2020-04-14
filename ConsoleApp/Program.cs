@@ -1,5 +1,8 @@
 ﻿using System;
 using ConsoleApp.Classes;
+using ConsoleApp.Inheritance;
+using ConsoleApp.Shapes;
+using Circle = ConsoleApp.Inheritance.Circle;
 using Cylinder = ConsoleApp.Inheritance.Cylinder;
 
 namespace ConsoleApp
@@ -9,11 +12,40 @@ namespace ConsoleApp
         static void Main(string[] args)
         {
             Cylinder cylinder = new Cylinder();
+            Circle circle = new Circle();
+            
+            Circle circle2 = new Cylinder();
+            //Cylinder cylinder2 = new Circle();
+            
+            //Implicit typecasting, automatic
+            Object o2 = new Circle();
+            
+            //Explicit typecasting (type)
+            Circle circle1 =  (Circle)o2;
+            
+            //Not allowed. Will cast InvalidCastException
+            //Cylinder cylinder2 = (Cylinder)o2;
+            
+            Object o1 = new Object();
+            
+            Console.WriteLine(o1.GetType());
+            Console.WriteLine(cylinder.GetType());
+            Console.WriteLine(cylinder.ToString());
+            
+            
+            Shape shape = new Sphere();
+            Shape shape1 = new Square();
+            
+            Shape[] shapes = new Shape[2];
+            
+            shapes[0] = new Square();
+            shapes[1] = new Sphere();
 
-            cylinder.Height = 100.0f;
-            cylinder.Radius = 10.0f;
+            for (int i = 0; i < shapes.Length; i++)
+            {
+                shapes[i].PrintType();
 
-
+            }
         }
 
         static void InitializeRectangle()

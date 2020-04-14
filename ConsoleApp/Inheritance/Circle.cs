@@ -1,4 +1,6 @@
-﻿namespace ConsoleApp.Inheritance
+﻿using System;
+
+namespace ConsoleApp.Inheritance
 {
     public class Circle
     {
