@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using ConsoleApp.Animals;
 using ConsoleApp.Classes;
+using Cylinder = ConsoleApp.Inheritance.Cylinder;
 
 namespace ConsoleApp
 {
@@ -9,15 +8,12 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-           Rectangle rectangle = new Rectangle();
-            
-            
-            
-            
-            Mammal m = new Dog();
-            m.Talk();
+            Cylinder cylinder = new Cylinder();
 
-            //Counter counter = new Counter();
+            cylinder.Height = 100.0f;
+            cylinder.Radius = 10.0f;
+
+
         }
 
         static void InitializeRectangle()
