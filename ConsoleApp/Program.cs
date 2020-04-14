@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using ConsoleApp.animals;
+using ConsoleApp.Animals;
+using ConsoleApp.Classes;
 
 namespace ConsoleApp
 {

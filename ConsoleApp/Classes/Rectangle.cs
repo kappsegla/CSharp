@@ -1,8 +1,8 @@
-﻿namespace ConsoleApp
+﻿namespace ConsoleApp.Classes
 {
     public class Rectangle
     {
-        //Fields, encapsulated with private and access thru property
+        //Fields, encapsulated with private and access through property
         private int width;
         private int height;
 
@@ -19,7 +19,7 @@
             Color = color;
         }
 
-        //Property with expression body
+        //Property for height with expression body
         public int Height
         {
             get => height;

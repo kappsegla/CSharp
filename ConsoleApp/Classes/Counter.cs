@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ConsoleApp
+﻿namespace ConsoleApp.Classes
 {
     public class Counter
     {

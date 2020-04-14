@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ConsoleApp.animals
+namespace ConsoleApp.Animals
 {
     public class Dog : Mammal
     {

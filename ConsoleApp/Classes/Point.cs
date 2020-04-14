@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp.classes
+﻿namespace ConsoleApp.Classes
 {
     public class Point
     {
