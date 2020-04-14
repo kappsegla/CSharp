@@ -9,6 +9,11 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
+           Rectangle rectangle = new Rectangle();
+            
+            
+            
+            
             Mammal m = new Dog();
             m.Talk();
 
