@@ -16,8 +16,5 @@ namespace ConsoleApp
         {
             Console.WriteLine(_instances);
         }
-
-
-
     }
 }

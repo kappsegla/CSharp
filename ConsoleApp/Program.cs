@@ -1,4 +1,5 @@
 ﻿using System;
+using ConsoleApp.Animals;
 using ConsoleApp.Classes;
 using ConsoleApp.Exercise2;
 using ConsoleApp.Inheritance;
@@ -12,11 +13,84 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            FiftyGame.Run();
+            //Uncomment the code you want to try
+            
+            //CreateObjects();
+            
+           // FiftyGame.Run();
+        
+            Animals();
+        
+        }
+
+        static Mammal CreateMammal(Mammals type)
+        {
+            switch (type)
+            {
+                case Mammals.cat: 
+                    return new Cat();
+
+                case Mammals.dog:
+                    return new Dog();
+               
+            }
+
+            return null;
+        }
+
+        enum Mammals
+        {
+            cat,
+            dog,
+            fox
+        }
+
+
+        static void Animals()
+        {
+
+            Dog dog = new Dog();
+            Mammal mammal = CreateMammal(Mammals.dog);
+            
+            Cat cat = new Cat();
+            Mammal mammal2 = new Cat();
+
+            Mammal[] mammals = new Mammal[2];
+            
+            mammals[0] = dog;
+            mammals[1] = cat;
+
+            //Can't instanciate Mammal, abstract class.
+            //Mammal mammal3 = new Mammal();
+
+            dog.Talk();
+            mammal.Talk();
+            cat.Talk();
+            mammal2.Talk();
+
+            mammal2 = dog;
+            mammal2.Talk();
+
+            Mammal foxMammal = new Fox();
+            foxMammal.Talk();
+
+
+
+
+
+          /*  Point point = new Point();
+            Point point2 = new Point { X = 1, Y = 2 };
+            Point point3 = new Point(1, 2);
+
+            
+            point.X = 10;
+            Console.WriteLine(point.Y);
+
+            */
             
             
         }
-
+        
         static void CreateObjects()
         {
             

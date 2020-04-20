@@ -4,7 +4,10 @@ namespace ConsoleApp.Animals
 {
     public class Dog : Mammal
     {
-        public new void Talk(){Console.WriteLine("Dog talking.");}
+        public override void Talk()
+        {
+            Console.WriteLine("Voff");
+        }
         
     }
 }

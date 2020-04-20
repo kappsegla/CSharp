@@ -2,8 +2,10 @@
 
 namespace ConsoleApp.Animals
 {
-    public class Mammal
+    public abstract class Mammal
     {
-        public void Talk(){Console.WriteLine("Mammal talking.");}
+        protected Mammal() { }
+
+        public abstract void Talk();
     }
 }

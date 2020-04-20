@@ -11,7 +11,7 @@ namespace ConsoleApp.Exercise2
 
             Random random = new Random();
             //Generate random number between 1-50
-            int randomNumber = random.Next(0, 51);
+            int randomNumber = random.Next(1, 51);
             int numberOfGuesses = 0;
             int[] guesses = new int[50];
 
