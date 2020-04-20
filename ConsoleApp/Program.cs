@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using ConsoleApp.Animals;
 using ConsoleApp.Classes;
 using ConsoleApp.Exercise2;
+using ConsoleApp.Generics;
 using ConsoleApp.Inheritance;
 using ConsoleApp.Shapes;
 using Circle = ConsoleApp.Inheritance.Circle;
@@ -14,13 +16,56 @@ namespace ConsoleApp
         static void Main(string[] args)
         {
             //Uncomment the code you want to try
-            
+
             //CreateObjects();
+
+            // FiftyGame.Run();
+
+            // Animals();
+
+            Generics();
+        
+        }
+
+        private static void Generics()
+        {
+            Storage<int> storage = new Storage<int>();
+
+            storage.Save(7);
+
+            int tal = storage.Get();
+
+            var storage1 = new Storage<double>();
+
+            storage1.Save(1.0);
+
+            var storage2 = new Storage<string>();
+
+            var storage3 = new Storage<Mammal>();
+
+            //This does not work, generic class can't create object
+            //Is just a template for creating a class
+            //var storage4 = new Storage();
+
+            List<int> talserie = new List<int>();
+            talserie.Add(1);
+            talserie.Add(2);
+            talserie.Add(3);
+
+            int tal1 = talserie[0];
+
+            List<string> text = new List<string>() { "Some text","Another text" };
+            text.Add("New text");
+           // text.Remove("New text");
+            Console.WriteLine(text.Count);
+
+            foreach( var t in text)
+            {
+                Console.WriteLine(t);
+            }
+
             
-           // FiftyGame.Run();
-        
-            Animals();
-        
+
         }
 
         static Mammal CreateMammal(Mammals type)

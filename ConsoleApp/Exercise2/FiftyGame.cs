@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace ConsoleApp.Exercise2
@@ -13,7 +14,8 @@ namespace ConsoleApp.Exercise2
             //Generate random number between 1-50
             int randomNumber = random.Next(1, 51);
             int numberOfGuesses = 0;
-            int[] guesses = new int[50];
+            //int[] guesses = new int[50];
+            List<int> guesses = new List<int>();
 
             while (true)
             {
@@ -27,7 +29,9 @@ namespace ConsoleApp.Exercise2
                 }
 
                 //Add to array of guessed numbers
-                guesses[numberOfGuesses++] = input;
+                //guesses[numberOfGuesses++] = input;
+                guesses.Add(input);
+                numberOfGuesses++;
 
                 if (input < randomNumber)
                 {
@@ -53,7 +57,7 @@ namespace ConsoleApp.Exercise2
             }
         }
 
-        private static bool AlreadyGuessed(int guess, int[] guesses)
+        private static bool AlreadyGuessed(int guess, List<int> guesses)
         {
             foreach (var oldGuess in guesses)
             {
