@@ -21,9 +21,9 @@ namespace ConsoleApp
 
             // FiftyGame.Run();
 
-            // Animals();
+             Animals();
 
-            Generics();
+            //Generics();
         
         }
 
@@ -93,12 +93,36 @@ namespace ConsoleApp
 
         static void Animals()
         {
+            List<Cat> cats = new List<Cat>()
+            {
+                new Cat(){Weight = 10},
+                new Cat(){Weight = 2},
+                new Cat(){Weight = 1},
+                new Cat(){Weight = 3}
+            };
+
+            foreach (var c in cats)
+            {
+                Console.WriteLine(c.Weight);
+            }
+
+            cats.Sort();
+            foreach (var c in cats)
+            {
+                Console.WriteLine(c.Weight);
+            }
+            
+            
 
             Dog dog = new Dog();
             Mammal mammal = CreateMammal(Mammals.dog);
             
             Cat cat = new Cat();
             Mammal mammal2 = new Cat();
+            IPet pet = new Cat();
+            pet.IsHungry();
+            
+           // IPet pet2 = new Fox();
 
             Mammal[] mammals = new Mammal[2];
             

@@ -7,5 +7,7 @@ namespace ConsoleApp.Animals
         protected Mammal() { }
 
         public abstract void Talk();
+        
+        
     }
 }
