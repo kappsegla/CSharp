@@ -19,11 +19,13 @@ namespace ConsoleApp
 
             //CreateObjects();
 
-            // FiftyGame.Run();
+            //FiftyGame.Run();
 
-             Animals();
+            //Animals();
 
             //Generics();
+            
+            Exercise3.Program.Run();
         
         }
 
@@ -185,13 +187,13 @@ namespace ConsoleApp
             Console.WriteLine(cylinder.ToString());
 
 
-            Shape shape = new Sphere();
-            Shape shape1 = new Square();
+            Shape shape = new Shapes.Circle(1.0);
+            Shape shape1 = new Square(1.0);
 
             Shape[] shapes = new Shape[2];
 
-            shapes[0] = new Square();
-            shapes[1] = new Sphere();
+            shapes[0] = new Square(1.0);
+            shapes[1] = new Shapes.Circle(1.0);
 
             for (int i = 0; i < shapes.Length; i++)
             {

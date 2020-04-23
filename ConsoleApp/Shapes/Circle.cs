@@ -2,24 +2,23 @@
 
 namespace ConsoleApp.Shapes
 {
-    public class Square : Shape
+    public class Circle : Shape
     {
         private double _size;
 
-        public Square(double size)
+        public Circle(double size)
         {
             _size = size;
         }
 
-
         public override void PrintType()
         {
-            Console.WriteLine("This is a Square");
+            Console.WriteLine("This is a Sphere");
         }
 
         public override double Area
         {
-            get { return _size * _size; }
+            get { return _size * _size * Math.PI; }
         }
     }
 }
