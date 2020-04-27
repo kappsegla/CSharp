@@ -24,62 +24,36 @@ namespace ConsoleApp
             //Animals();
 
             //Generics();
-            
-            Exercise3.Program.Run();
-        
+
+            PointStackAndEnumerable();
+        }
+
+        private static void PointStackAndEnumerable()
+        {
         }
 
         private static void Generics()
         {
             Storage<int> storage = new Storage<int>();
-
             storage.Save(7);
-
             int tal = storage.Get();
 
             var storage1 = new Storage<double>();
-
             storage1.Save(1.0);
 
             var storage2 = new Storage<string>();
-
             var storage3 = new Storage<Mammal>();
-
-            //This does not work, generic class can't create object
-            //Is just a template for creating a class
-            //var storage4 = new Storage();
-
-            List<int> talserie = new List<int>();
-            talserie.Add(1);
-            talserie.Add(2);
-            talserie.Add(3);
-
-            int tal1 = talserie[0];
-
-            List<string> text = new List<string>() { "Some text","Another text" };
-            text.Add("New text");
-           // text.Remove("New text");
-            Console.WriteLine(text.Count);
-
-            foreach( var t in text)
-            {
-                Console.WriteLine(t);
-            }
-
-            
-
         }
 
         static Mammal CreateMammal(Mammals type)
         {
             switch (type)
             {
-                case Mammals.cat: 
+                case Mammals.cat:
                     return new Cat();
 
                 case Mammals.dog:
                     return new Dog();
-               
             }
 
             return null;
@@ -97,10 +71,10 @@ namespace ConsoleApp
         {
             List<Cat> cats = new List<Cat>()
             {
-                new Cat(){Weight = 10},
-                new Cat(){Weight = 2},
-                new Cat(){Weight = 1},
-                new Cat(){Weight = 3}
+                new Cat() {Weight = 10},
+                new Cat() {Weight = 2},
+                new Cat() {Weight = 1},
+                new Cat() {Weight = 3}
             };
 
             foreach (var c in cats)
@@ -113,21 +87,20 @@ namespace ConsoleApp
             {
                 Console.WriteLine(c.Weight);
             }
-            
-            
+
 
             Dog dog = new Dog();
             Mammal mammal = CreateMammal(Mammals.dog);
-            
+
             Cat cat = new Cat();
             Mammal mammal2 = new Cat();
             IPet pet = new Cat();
             pet.IsHungry();
-            
-           // IPet pet2 = new Fox();
+
+            // IPet pet2 = new Fox();
 
             Mammal[] mammals = new Mammal[2];
-            
+
             mammals[0] = dog;
             mammals[1] = cat;
 
@@ -146,25 +119,19 @@ namespace ConsoleApp
             foxMammal.Talk();
 
 
-
-
-
-          /*  Point point = new Point();
-            Point point2 = new Point { X = 1, Y = 2 };
-            Point point3 = new Point(1, 2);
-
-            
-            point.X = 10;
-            Console.WriteLine(point.Y);
-
-            */
-            
-            
+            /*  Point point = new Point();
+              Point point2 = new Point { X = 1, Y = 2 };
+              Point point3 = new Point(1, 2);
+  
+              
+              point.X = 10;
+              Console.WriteLine(point.Y);
+  
+              */
         }
-        
+
         static void CreateObjects()
         {
-            
             Cylinder cylinder = new Cylinder();
             Circle circle = new Circle();
 
@@ -200,7 +167,7 @@ namespace ConsoleApp
                 shapes[i].PrintType();
             }
         }
-        
+
 
         static void InitializeRectangle()
         {
