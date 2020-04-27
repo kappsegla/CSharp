@@ -30,6 +30,15 @@ namespace ConsoleApp
 
         private static void PointStackAndEnumerable()
         {
+            Point point1 = new Point() {X = 4.0, Y = 3.0};
+            
+            Point point2 = new Point(0.0,0.0);
+            
+            
+            
+            
+            
+            
         }
 
         private static void Generics()
