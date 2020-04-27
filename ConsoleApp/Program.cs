@@ -26,10 +26,26 @@ namespace ConsoleApp
 
             //Generics();
 
-            PointStackAndEnumerable();
+            //Point();
+
+            StackExample();
         }
 
-        private static void PointStackAndEnumerable()
+        private static void StackExample()
+        {
+            Generics.Stack<int> stack = new Generics.Stack<int>(); 
+            stack.Push(1);
+            stack.Push(2);
+            stack.Push(3);
+            
+            Console.WriteLine(stack.Pop());
+            Console.WriteLine(stack.Pop());
+            Console.WriteLine(stack.Pop());
+            
+            
+        }
+
+        private static void Point()
         {
             Point point1 = new Point() {X = 4.0, Y = 3.0};
             
@@ -48,11 +64,6 @@ namespace ConsoleApp
             //Copy data from point1 into our new point5
             Point point5 = new Point();
             point1.CopyTo(point5);
-
-
-
-
-
         }
 
         private static void Generics()
