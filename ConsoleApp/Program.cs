@@ -41,6 +41,8 @@ namespace ConsoleApp
             
             Point point3 = new Point(point1);
 
+            Point point4 = point1.Clone();
+
 
 
         }

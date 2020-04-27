@@ -26,7 +26,12 @@ namespace ConsoleApp.Generics
 			X = other.X;
 			Y = other.Y;
 		}
-	
+
+		public Point Clone()
+        {
+			return new Point(this);
+        }
+			
 	
 		public double DistanceTo(Point other)
 		{
