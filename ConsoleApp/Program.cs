@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using ConsoleApp.Animals;
 using ConsoleApp.Classes;
@@ -33,16 +34,14 @@ namespace ConsoleApp
 
         private static void StackExample()
         {
-            Generics.Stack<int> stack = new Generics.Stack<int>(); 
-            stack.Push(1);
-            stack.Push(2);
-            stack.Push(3);
+            Generics.Stack<string> stack = new Generics.Stack<string>(); 
+            stack.Push("1");
+            stack.Push("2");
+            stack.Push("3");
             
             Console.WriteLine(stack.Pop());
             Console.WriteLine(stack.Pop());
             Console.WriteLine(stack.Pop());
-            
-            
         }
 
         private static void Point()
