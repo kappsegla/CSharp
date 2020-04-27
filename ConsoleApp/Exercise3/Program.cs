@@ -32,11 +32,12 @@ namespace ConsoleApp.Exercise3
 
     public class Ellipse : Shape
     {
+        public override double Area { get; }
     }
 
     public class Rectangle : Shape
     {
-        
+        public override double Area { get; }
     }
 
     public enum ShapeType
