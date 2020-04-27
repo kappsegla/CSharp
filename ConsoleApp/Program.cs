@@ -8,6 +8,7 @@ using ConsoleApp.Inheritance;
 using ConsoleApp.Shapes;
 using Circle = ConsoleApp.Inheritance.Circle;
 using Cylinder = ConsoleApp.Inheritance.Cylinder;
+using Point = ConsoleApp.Generics.Point;
 
 namespace ConsoleApp
 {
