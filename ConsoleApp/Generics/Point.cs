@@ -5,18 +5,27 @@ public class Point
 	public double X { get; set; }
 	public double Y { get; set; }
 
+	//Two parameters constructor
 	public Point(double x, double y)
 	{
 		X = x;
 		Y = y;
 	}
 
+	//Default constructor
 	public Point()
 	{
 		
 	}
 	
-
+	//Copy constructor
+	public Point(Point other)
+	{
+		X = other.X;
+		Y = other.Y;
+	}
+	
+	
 	public double DistanceTo(Point other)
 	{
 		var s1 = this.X - other.X;

@@ -33,12 +33,15 @@ namespace ConsoleApp
             Point point1 = new Point() {X = 4.0, Y = 3.0};
             
             Point point2 = new Point(0.0,0.0);
+
+            var distance = point1.DistanceTo(point2);
             
+            Console.WriteLine(distance);
             
-            
-            
-            
-            
+            Point point3 = new Point(point1);
+
+
+
         }
 
         private static void Generics()
