@@ -1,4 +1,6 @@
-﻿namespace ConsoleApp.Generics
+﻿using System;
+
+namespace ConsoleApp.Generics
 {
     public class Stack<T>
     {
@@ -23,6 +25,9 @@
 
         public T Pop()
         {
+            if( head == null)
+                throw new InvalidOperationException();
+            
             var temp = head;
 
             head = temp.next;
