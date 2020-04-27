@@ -2,7 +2,7 @@
 
 namespace ConsoleApp.Generics
 {
-	public class Point
+	public class Point : ICloneable
 	{
 		public double X { get; set; }
 		public double Y { get; set; }
@@ -27,11 +27,17 @@ namespace ConsoleApp.Generics
 			Y = other.Y;
 		}
 
-		public Point Clone()
+		public object Clone()
         {
 			return new Point(this);
         }
-			
+
+		public void CopyTo(Point copy)
+        {
+			copy.X = this.X;
+			copy.Y = this.Y;
+        }
+				
 	
 		public double DistanceTo(Point other)
 		{

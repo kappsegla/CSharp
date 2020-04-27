@@ -39,9 +39,17 @@ namespace ConsoleApp
             
             Console.WriteLine(distance);
             
+            //Create a new object, copy data from point1
             Point point3 = new Point(point1);
 
-            Point point4 = point1.Clone();
+            //Create a new object that is a copy of point1s data
+            Point point4 = (Point)point1.Clone();
+
+            //Copy data from point1 into our new point5
+            Point point5 = new Point();
+            point1.CopyTo(point5);
+
+
 
 
 
