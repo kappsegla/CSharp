@@ -13,10 +13,11 @@ using Point = ConsoleApp.Generics.Point;
 
 namespace ConsoleApp
 {
-    class Program
+   class Program
     {
         static void Main(string[] args)
         {
+            
             //Uncomment the code you want to try
 
             //CreateObjects();
