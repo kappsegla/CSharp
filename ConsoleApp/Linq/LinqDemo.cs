@@ -51,11 +51,6 @@ namespace ConsoleApp.Linq
             {
                 Console.Write("{0,1} ", i);
             }
-            
-            foreach (var i in enumerable)
-            {
-                Console.Write("{0,1} ", i);
-            }
         }
 
         //Avoid returning a List if not needed.
@@ -71,10 +66,7 @@ namespace ConsoleApp.Linq
             return ImmutableList.Create<string>("Kalmar", "Stockholm", "Göteborg", "Malmö", "Jönköping", "Borås",
                 "Östersund", "Lund");
         }
-
-   
     }
-    
     
     //Relationships
     public class Student
@@ -85,7 +77,7 @@ namespace ConsoleApp.Linq
         //One to Many Relationship
         public Course Course { get; set; }
         //One to One
-        public StudentAddress Address { get; set; }
+        public Address Address { get; set; }
         
         //Many to Many
         public ICollection<Course> Courses { get; set; }
@@ -98,18 +90,16 @@ namespace ConsoleApp.Linq
 
         public ICollection<Student> Students { get; set; }
     }
-    
-    public class StudentAddress
+ 
+    //In swedish it's spelled Adress
+    public class Address  
     {
-        public int StudentAddressId { get; set; }
-        public string Address { get; set; }
+        public int AddressId { get; set; }
+        public string Road { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
 
         public int StudentId { get; set; }
         public Student Student { get; set; }
     }
-    
-    
-    
 }
