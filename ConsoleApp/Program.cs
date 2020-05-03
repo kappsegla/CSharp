@@ -6,6 +6,7 @@ using ConsoleApp.Classes;
 using ConsoleApp.Exercise2;
 using ConsoleApp.Generics;
 using ConsoleApp.Inheritance;
+using ConsoleApp.Linq;
 using ConsoleApp.Shapes;
 using Circle = ConsoleApp.Inheritance.Circle;
 using Cylinder = ConsoleApp.Inheritance.Cylinder;
@@ -17,7 +18,6 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            
             //Uncomment the code you want to try
 
             //CreateObjects();
@@ -30,7 +30,10 @@ namespace ConsoleApp
 
             //Point();
 
-            StackExample();
+            //StackExample();
+            
+            var demo = new LinqDemo();
+            demo.Run();
         }
 
         private static void StackExample()
