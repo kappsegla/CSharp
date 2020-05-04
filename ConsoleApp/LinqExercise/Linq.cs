@@ -14,13 +14,13 @@ namespace ConsoleApp.LinqExercise
             Area = area;
         }
 
-        public string Name { get; set; }        
+        public string Name { get; set; }
         public string Capital { get; set; }
-        public double Population{ get; set; }
+        public double Population { get; set; }
         public int Area { get; set; }
     }
-    
-    
+
+
     public class Linq
     {
         private IEnumerable<Country> countries = new List<Country>()
@@ -49,16 +49,61 @@ namespace ConsoleApp.LinqExercise
         {
             Uppgift2();
         }
-        
+
         //Skriv ut namnet på det första och det sista landet i listan på konsolen.
         public void Uppgift2()
         {
             Console.WriteLine(countries.First().Name);
             Console.WriteLine(countries.Last().Name);
         }
+
+        //Skriv ut namnen på alla länder i listan, sorterade i bokstavsordning.
+        public void Uppgift3()
+        {
+            var query = countries.OrderBy(c => c.Name);
+
+            Console.WriteLine("Sorted on Name.");
+            foreach (var country in query)
+            {
+                Console.WriteLine(country.Name);
+            }
+        }
+
+        //Skriv ut namnen på alla länder i listan, sorterade efter befolkning, med den högsta befolkningen först.
+        public void Uppgift4()
+        {
+            var query = countries.OrderByDescending(c => c.Population);
+
+            Console.WriteLine("Sorted for population, biggest first.");
+            foreach (var country in query)
+            {
+                Console.WriteLine(country.Name);
+            }
+        }
+
+        //Skriv ut vilken den största befolkningsmängden är.
+        public void Uppgift5()
+        {
+            var maxPop = countries.Max(c => c.Population);
+
+            Console.WriteLine("Max population: " + maxPop);
+        }
         
+        //Skriv ut genomsnittsarean och hur många länder som har en mindre area än genomsnittet.
+        //Can it be done in one query?
+        public void Uppgift6()
+        {
+            var avgArea = countries.Average(c => c.Area);
+            Console.WriteLine("Average area: " + avgArea);
+            var query = countries.Where(c => c.Area < avgArea);
+            Console.WriteLine("Countries smaller than average:");
+            foreach (var country in query)
+            {
+                Console.WriteLine(country.Name);
+            }
+        }
 
-
-
+        
+        
     }
 }
