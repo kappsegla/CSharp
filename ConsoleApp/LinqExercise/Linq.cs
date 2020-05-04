@@ -126,8 +126,16 @@ namespace ConsoleApp.LinqExercise
             }
         }
         
+        //Använd tre queries för att skriva ut hur många länder som har en
+        //area över 10 000, över 100 000 och över 1 000 000 respektive.
+        public void Uppgift8()
+        {
+            //We don't need Where here, Count has a overloaded version that takes a filter directly
+            Console.WriteLine(countries.Where(c => c.Area > 10000).Count());
+            Console.WriteLine(countries.Count(c => c.Area > 100000));
+            Console.WriteLine(countries.Count(c => c.Area > 1000000));
+        }
         
-
         
         
     }
