@@ -25,6 +25,8 @@ namespace ConsoleApp.Linq
         private void Demo3()
         {
             
+            
+            
         }
 
         //Avoid returning a List if not needed.
@@ -96,33 +98,12 @@ namespace ConsoleApp.Linq
         public int Id { get; set; }
         public string Name { get; set; }
 
-        //One to Many Relationship
         public Course Course { get; set; }
-
-        //One to One
-        public Address Address { get; set; }
-
-        //Many to Many
-        public ICollection<Course> Courses { get; set; }
     }
 
     public class Course
     {
         public int CourseId { get; set; }
         public string CourseName { get; set; }
-
-        public ICollection<Student> Students { get; set; }
-    }
-
-    //In swedish it's spelled Adress
-    public class Address
-    {
-        public int AddressId { get; set; }
-        public string Road { get; set; }
-        public string City { get; set; }
-        public string Country { get; set; }
-
-        public int StudentId { get; set; }
-        public Student Student { get; set; }
     }
 }
