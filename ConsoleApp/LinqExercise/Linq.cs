@@ -59,10 +59,9 @@ namespace ConsoleApp.LinqExercise
             //Uppgift11();
             //Uppgift12();
             //Uppgift13();
-            Uppgift14();
+            //Uppgift14();
+            Uppgift15();
         }
-
-        
 
         //Skriv ut namnet på det första och det sista landet i listan på konsolen.
         public void Uppgift2()
@@ -102,7 +101,7 @@ namespace ConsoleApp.LinqExercise
 
             Console.WriteLine("Max population: " + maxPop);
         }
-        
+
         //Skriv ut genomsnittsarean och hur många länder som har en mindre area än genomsnittet.
         public void Uppgift6()
         {
@@ -115,6 +114,7 @@ namespace ConsoleApp.LinqExercise
                 Console.WriteLine(country.Name);
             }
         }
+
         //Skriv ut namnen på alla länder som har en befolkning som är mindre än 5 miljoner.
         public void Uppgift7()
         {
@@ -129,7 +129,7 @@ namespace ConsoleApp.LinqExercise
                 Console.WriteLine(country.Name + "  " + country.Population);
             }
         }
-        
+
         //Använd tre queries för att skriva ut hur många länder som har en
         //area över 10 000, över 100 000 och över 1 000 000 respektive.
         public void Uppgift8()
@@ -139,7 +139,7 @@ namespace ConsoleApp.LinqExercise
             Console.WriteLine(countries.Count(c => c.Area > 100000));
             Console.WriteLine(countries.Count(c => c.Area > 1000000));
         }
-        
+
         //Skriv ut namn och huvudstad för alla länder vars huvudstad börjar på samma bokstav som landets namn.
         public void Uppgift9()
         {
@@ -150,11 +150,12 @@ namespace ConsoleApp.LinqExercise
                 Console.WriteLine(country.Name + " - " + country.Capital);
             }
         }
+
         //Skriv ut alla land vars namn är längre än namnet på deras huvudstad.
         public void Uppgift10()
         {
             var query = countries.Where(c => c.Name.Length > c.Capital.Length);
-             foreach (var country in query)
+            foreach (var country in query)
             {
                 Console.WriteLine(country.Name + " - " + country.Capital);
             }
@@ -179,8 +180,8 @@ namespace ConsoleApp.LinqExercise
                 countries.Where(c => c.Population > 7.0)
                     .OrderBy(c => c.Population)
                     .Take(3);
-                
-             foreach (var country in query)
+
+            foreach (var country in query)
             {
                 Console.WriteLine(country.Name + " " + country.Population);
             }
@@ -191,9 +192,9 @@ namespace ConsoleApp.LinqExercise
         public void Uppgift13()
         {
             var query = countries.Where(c => c.Area >= 500000)
-                                         .OrderByDescending(c => c.Name)
-                                         .Take(3);
-            
+                .OrderByDescending(c => c.Name)
+                .Take(3);
+
             foreach (var country in query)
             {
                 Console.WriteLine(country.Name + " " + country.Population);
@@ -205,7 +206,7 @@ namespace ConsoleApp.LinqExercise
         public void Uppgift14()
         {
             var query = countries.GroupBy(c => c.Name[0]);
-            
+
             foreach (var groups in query)
             {
                 Console.WriteLine(groups.Key);
@@ -214,7 +215,31 @@ namespace ConsoleApp.LinqExercise
                     Console.WriteLine("\t" + c.Name);
                 }
             }
-            
+        }
+
+        //Skriv ut hur många länder det finns som har en befolkning på X miljoner och deras namn.
+        //Sortera dem i bokstavsordning på namnet.
+        //Befolkningsmängden ska avrundas nedåt till ett heltal.
+        public void Uppgift15()
+        {
+            var query = countries.GroupBy(c => Math.Floor(c.Population))
+                .OrderBy(c => c.Key)
+                .Select(group =>
+                    new
+                    {
+                        Pop = group.Key,
+                        Countries = group.OrderBy(x => x.Name)
+                    });
+
+
+            foreach (var groups in query)
+            {
+                Console.WriteLine($"Länder med {groups.Pop} miljoner invånare:");
+                foreach (var c in groups.Countries)
+                {
+                    Console.WriteLine("-" + c.Name);
+                }
+            }
         }
     }
 }
