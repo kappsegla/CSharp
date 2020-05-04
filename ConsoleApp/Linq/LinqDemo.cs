@@ -13,7 +13,7 @@ namespace ConsoleApp.Linq
     {
         public void Run()
         {
-            Demo2();
+            Demo1();
         }
         
         
@@ -43,6 +43,7 @@ namespace ConsoleApp.Linq
         public void Demo2()
         {
             //int[] numbers = new int[7] {0, 1, 2, 3, 4, 5, 6};
+            //var v = new []{1,2,3,4,5}.ToList();
             var numbers = Enumerable.Range(0, 7); 
 
             var enumerable = numbers.Where(i => i % 2 == 0);
