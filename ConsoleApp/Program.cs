@@ -32,8 +32,9 @@ namespace ConsoleApp
 
             //StackExample();
             
-            var demo = new LinqDemo();
-            demo.Run();
+            // var demo = new LinqDemo();
+            // demo.Run();
+            new LinqExercise.Linq().Run();
         }
 
         private static void StackExample()

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 
 namespace ConsoleApp.LinqExercise
 {
@@ -47,7 +49,15 @@ namespace ConsoleApp.LinqExercise
 
         public void Run()
         {
+            // var home = System.Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            //
+            // File.Create(Path.Combine(home,"tempfile.txt"));
+            
             Uppgift2();
+            Uppgift3();
+            Uppgift4();
+            Uppgift5();
+            Uppgift6();
         }
 
         //Skriv ut namnet på det första och det sista landet i listan på konsolen.
@@ -77,7 +87,7 @@ namespace ConsoleApp.LinqExercise
             Console.WriteLine("Sorted for population, biggest first.");
             foreach (var country in query)
             {
-                Console.WriteLine(country.Name);
+                Console.WriteLine(country.Name + "  " + country.Population);
             }
         }
 
@@ -90,7 +100,6 @@ namespace ConsoleApp.LinqExercise
         }
         
         //Skriv ut genomsnittsarean och hur många länder som har en mindre area än genomsnittet.
-        //Can it be done in one query?
         public void Uppgift6()
         {
             var avgArea = countries.Average(c => c.Area);
@@ -102,6 +111,22 @@ namespace ConsoleApp.LinqExercise
                 Console.WriteLine(country.Name);
             }
         }
+        //Skriv ut namnen på alla länder som har en befolkning som är mindre än 5 miljoner.
+        public void Uppgift7()
+        {
+            //var query = countries.Where(c => c.Population < 5.0);
+            //Using Query syntax
+            var query = from c in countries
+                where c.Population < 5.0
+                select c;
+            Console.WriteLine("Population less than 5 miljon: ");
+            foreach (var country in query)
+            {
+                Console.WriteLine(country.Name + "  " + country.Population);
+            }
+        }
+        
+        
 
         
         
