@@ -22,13 +22,6 @@ namespace ConsoleApp.Linq
             // Console.WriteLine("Number of cities containing r: " + i);
         }
 
-        private void Demo3()
-        {
-            
-            
-            
-        }
-
         //Avoid returning a List if not needed.
         public IEnumerable<string> GetCities()
         {
@@ -69,17 +62,24 @@ namespace ConsoleApp.Linq
             //var numbers = new List<int>{0,1,2,3,4,5,6};
             var numbers = Enumerable.Range(0, 7);
 
-          
+
             double average = numbers.Average();
             Console.WriteLine("Average of numbers: " + average);
 
             var enumerable = numbers.Where(i => i % 2 == 0);
-           
+            //var enumerable = numbers.Where(IsEven);
+            
             foreach (var i in enumerable)
             {
                 Console.WriteLine("{0,1} ", i);
             }
         }
+
+        private bool IsEven(int i)
+        {
+            return i % 2 == 0;
+        }
+
 
 
         //Prefer returning Enumerable interface instead.
@@ -90,9 +90,59 @@ namespace ConsoleApp.Linq
             return ImmutableList.Create<string>("Kalmar", "Stockholm", "Göteborg", "Malmö", "Jönköping", "Borås",
                 "Östersund", "Lund");
         }
+
+        private void Demo3()
+        {
+            //Create some students and courses.
+            var course1 = new Course() {CourseId = 0, CourseName = "C#"};
+            var course2 = new Course() {CourseId = 1, CourseName = "Database"};
+
+            var students = new List<Student>()
+            {
+                new Student() {Id = 0, Name = "Martin", Course = course1},
+                new Student() {Id = 1, Name = "Maria", Course = course1},
+                new Student() {Id = 2, Name = "Malin", Course = course2},
+                new Student() {Id = 3, Name = "Kalle", Course = course1},
+                new Student() {Id = 4, Name = "Indira", Course = course1},
+                new Student() {Id = 5, Name = "Parul", Course = course2}
+            };
+            //Ask questions like which students attends a specific course
+            var list = students.Where(s => s.Course.CourseId == 0);
+
+            foreach (var student in list)
+            {
+                Console.WriteLine(student.Name);
+            }
+
+            //How many students do we have on each course?
+            var groups =
+                students.GroupBy(s => s.Course)
+                    .Select(group => new
+                    {
+                        CourseName = group.Key.CourseName,
+                        StudentCount = group.Count()
+                    }).OrderBy(x => x.CourseName);
+
+            foreach (var group in groups)
+            {
+                Console.WriteLine(group.CourseName + "\t" + group.StudentCount);
+            }
+
+
+            // foreach (var group in groups)
+            // {
+            //     Console.WriteLine("Course: {0}", group.Key.CourseName); //Each group has a key 
+            //  
+            //     foreach(var s in group) // Each group has inner collection
+            //         Console.WriteLine("Student Name: {0}", s.Name);
+            // }
+
+
+            //C#  4
+            //Database 2
+        }
     }
 
-    //Relationships
     public class Student
     {
         public int Id { get; set; }
