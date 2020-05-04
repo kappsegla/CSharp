@@ -7,22 +7,43 @@ namespace ConsoleApp.Linq
 {
     //LINQ is query language. It can only filter and transform data.
     //That what LINQ is intended for.
-    
+
 
     public class LinqDemo
     {
         public void Run()
         {
-            Demo1();
+            Demo3();
+
+            // var list = GetCities();
+            //
+            // var i = list.Where(s => s.Contains("r")).Count();
+            //
+            // Console.WriteLine("Number of cities containing r: " + i);
         }
-        
-        
+
+        private void Demo3()
+        {
+            
+        }
+
+        //Avoid returning a List if not needed.
+        public IEnumerable<string> GetCities()
+        {
+            return new List<string>()
+            {
+                "Kalmar", "Stockholm", "Göteborg",
+                "Malmö", "Jönköping", "Borås", "Östersund", "Lund"
+            };
+        }
+
+
         //Query syntax:
         public void Demo1()
         {
             // The Three Parts of a LINQ Query:
             // 1. Obtain the data source.
-            int[] numbers = new int[7] {0, 1, 2, 3, 4, 5, 6};
+            int[] numbers = new int[] {0, 1, 2, 3, 4, 5, 6};
 
             // 2. Create the query.
             // numQuery is an IEnumerable<int>
@@ -38,27 +59,27 @@ namespace ConsoleApp.Linq
             }
         }
 
-        
+
         //Method syntax:
         public void Demo2()
         {
             //int[] numbers = new int[7] {0, 1, 2, 3, 4, 5, 6};
-            //var v = new []{1,2,3,4,5}.ToList();
-            var numbers = Enumerable.Range(0, 7); 
+            //var numbers = new List<int>{0,1,2,3,4,5,6};
+            var numbers = Enumerable.Range(0, 7);
+
+          
+            double average = numbers.Average();
+            Console.WriteLine("Average of numbers: " + average);
 
             var enumerable = numbers.Where(i => i % 2 == 0);
-            
+           
             foreach (var i in enumerable)
             {
-                Console.Write("{0,1} ", i);
+                Console.WriteLine("{0,1} ", i);
             }
         }
 
-        //Avoid returning a List if not needed.
-        public List<string> GetCities()
-        {
-            return new List<string>(){"Kalmar","Stockholm","Göteborg","Malmö","Jönköping","Borås","Östersund","Lund"};
-        } 
+
         //Prefer returning Enumerable interface instead.
         //https://medium.com/developers-arena/ienumerable-vs-icollection-vs-ilist-vs-iqueryable-in-c-2101351453db
         public IEnumerable<string> GetCitiesInterfaceStyle()
@@ -68,7 +89,7 @@ namespace ConsoleApp.Linq
                 "Östersund", "Lund");
         }
     }
-    
+
     //Relationships
     public class Student
     {
@@ -77,9 +98,10 @@ namespace ConsoleApp.Linq
 
         //One to Many Relationship
         public Course Course { get; set; }
+
         //One to One
         public Address Address { get; set; }
-        
+
         //Many to Many
         public ICollection<Course> Courses { get; set; }
     }
@@ -91,9 +113,9 @@ namespace ConsoleApp.Linq
 
         public ICollection<Student> Students { get; set; }
     }
- 
+
     //In swedish it's spelled Adress
-    public class Address  
+    public class Address
     {
         public int AddressId { get; set; }
         public string Road { get; set; }
