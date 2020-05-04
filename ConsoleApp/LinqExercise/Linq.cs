@@ -58,7 +58,8 @@ namespace ConsoleApp.LinqExercise
             // Uppgift10();
             //Uppgift11();
             //Uppgift12();
-            Uppgift13();
+            //Uppgift13();
+            Uppgift14();
         }
 
         
@@ -199,8 +200,20 @@ namespace ConsoleApp.LinqExercise
             }
         }
 
+        //Skriv ut hur många länder det finns som börjar på varje bokstav som finns i listan. Exempelvis så finns det två länder vars namn börjar på S,
+        //ett som börjar på D och två som börjar på F. Tips: group..by..into.
         public void Uppgift14()
         {
+            var query = countries.GroupBy(c => c.Name[0]);
+            
+            foreach (var groups in query)
+            {
+                Console.WriteLine(groups.Key);
+                foreach (var c in groups)
+                {
+                    Console.WriteLine("\t" + c.Name);
+                }
+            }
             
         }
     }
