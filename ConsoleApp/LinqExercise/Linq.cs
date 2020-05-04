@@ -57,7 +57,8 @@ namespace ConsoleApp.LinqExercise
             // Uppgift9();
             // Uppgift10();
             //Uppgift11();
-            Uppgift12();
+            //Uppgift12();
+            Uppgift13();
         }
 
         
@@ -152,19 +153,16 @@ namespace ConsoleApp.LinqExercise
         public void Uppgift10()
         {
             var query = countries.Where(c => c.Name.Length > c.Capital.Length);
-            Console.WriteLine("Countries where name and capital starts with same letter:");
-            foreach (var country in query)
+             foreach (var country in query)
             {
                 Console.WriteLine(country.Name + " - " + country.Capital);
             }
-            
         }
 
         //Skriv ut de fem första länderna som har minst folkmängd.
         public void Uppgift11()
         {
             var query = countries.OrderBy(c => c.Population).Take(5);
-            Console.WriteLine("Countries where name and capital starts with same letter:");
             foreach (var country in query)
             {
                 Console.WriteLine(country.Name + " " + country.Population);
@@ -181,13 +179,29 @@ namespace ConsoleApp.LinqExercise
                     .OrderBy(c => c.Population)
                     .Take(3);
                 
-            Console.WriteLine("Countries where name and capital starts with same letter:");
+             foreach (var country in query)
+            {
+                Console.WriteLine(country.Name + " " + country.Population);
+            }
+        }
+
+        //Skriv ut namnen på upp till tre länder som har en area på minst 500 000 km2,
+        //sorterade fallande efter namn.
+        public void Uppgift13()
+        {
+            var query = countries.Where(c => c.Area >= 500000)
+                                         .OrderByDescending(c => c.Name)
+                                         .Take(3);
+            
             foreach (var country in query)
             {
                 Console.WriteLine(country.Name + " " + country.Population);
             }
         }
-        
-        
+
+        public void Uppgift14()
+        {
+            
+        }
     }
 }
