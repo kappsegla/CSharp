@@ -56,7 +56,8 @@ namespace ConsoleApp.LinqExercise
             // Uppgift8();
             // Uppgift9();
             // Uppgift10();
-            Uppgift11();
+            //Uppgift11();
+            Uppgift12();
         }
 
         
@@ -170,10 +171,23 @@ namespace ConsoleApp.LinqExercise
             }
         }
 
+        //Skriv ut de tre första länderna som har minst folkmängd och över 7 miljoner.
+        //Exempelvis kommer Norge inte med för det har bara 5 miljoner,
+        //men Sverige har 10 miljoner så det kommer med.
         public void Uppgift12()
         {
-            
-            
+            var query =
+                countries.Where(c => c.Population > 7.0)
+                    .OrderBy(c => c.Population)
+                    .Take(3);
+                
+            Console.WriteLine("Countries where name and capital starts with same letter:");
+            foreach (var country in query)
+            {
+                Console.WriteLine(country.Name + " " + country.Population);
+            }
         }
+        
+        
     }
 }
