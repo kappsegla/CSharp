@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ConsoleApp.LinqExercise
 {
@@ -23,7 +25,6 @@ namespace ConsoleApp.LinqExercise
     {
         private IEnumerable<Country> countries = new List<Country>()
         {
-
             new Country("Sverige", "Stockholm", 10.07, 450295),
             new Country("Norge", "Oslo", 5.27, 323802),
             new Country("Island", "Reykyavik", 0.33, 102775),
@@ -43,6 +44,19 @@ namespace ConsoleApp.LinqExercise
             new Country("Luxemburg", "Luxemburg", 0.58, 2586),
             new Country("Liechtenstein", "Vaduz", 0.038, 160)
         };
+
+        public void Run()
+        {
+            Uppgift2();
+        }
+        
+        //Skriv ut namnet på det första och det sista landet i listan på konsolen.
+        public void Uppgift2()
+        {
+            Console.WriteLine(countries.First().Name);
+            Console.WriteLine(countries.Last().Name);
+        }
+        
 
 
 
