@@ -49,15 +49,15 @@ namespace ConsoleApp.LinqExercise
 
         public void Run()
         {
-            // var home = System.Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            //
-            // File.Create(Path.Combine(home,"tempfile.txt"));
-            
-            Uppgift2();
-            Uppgift3();
-            Uppgift4();
-            Uppgift5();
-            Uppgift6();
+            // Uppgift2();
+            // Uppgift3();
+            // Uppgift4();
+            // Uppgift5();
+            // Uppgift6();
+            Uppgift7();
+            Uppgift8();
+            Uppgift9();
+            // Uppgift10();
         }
 
         //Skriv ut namnet på det första och det sista landet i listan på konsolen.
@@ -134,6 +134,17 @@ namespace ConsoleApp.LinqExercise
             Console.WriteLine(countries.Where(c => c.Area > 10000).Count());
             Console.WriteLine(countries.Count(c => c.Area > 100000));
             Console.WriteLine(countries.Count(c => c.Area > 1000000));
+        }
+        
+        //Skriv ut namn och huvudstad för alla länder vars huvudstad börjar på samma bokstav som landets namn.
+        public void Uppgift9()
+        {
+            var query = countries.Where(c => c.Name[0] == c.Capital[0]);
+            Console.WriteLine("Countries where name and capital starts with same letter:");
+            foreach (var country in query)
+            {
+                Console.WriteLine(country.Name + " - " + country.Capital);
+            }
         }
         
         
