@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Net;
 
 namespace ConsoleApp.LinqExercise
 {
@@ -54,11 +52,14 @@ namespace ConsoleApp.LinqExercise
             // Uppgift4();
             // Uppgift5();
             // Uppgift6();
-            Uppgift7();
-            Uppgift8();
-            Uppgift9();
+            // Uppgift7();
+            // Uppgift8();
+            // Uppgift9();
             // Uppgift10();
+            Uppgift11();
         }
+
+        
 
         //Skriv ut namnet på det första och det sista landet i listan på konsolen.
         public void Uppgift2()
@@ -146,8 +147,33 @@ namespace ConsoleApp.LinqExercise
                 Console.WriteLine(country.Name + " - " + country.Capital);
             }
         }
-        
-        
-        
+        //Skriv ut alla land vars namn är längre än namnet på deras huvudstad.
+        public void Uppgift10()
+        {
+            var query = countries.Where(c => c.Name.Length > c.Capital.Length);
+            Console.WriteLine("Countries where name and capital starts with same letter:");
+            foreach (var country in query)
+            {
+                Console.WriteLine(country.Name + " - " + country.Capital);
+            }
+            
+        }
+
+        //Skriv ut de fem första länderna som har minst folkmängd.
+        public void Uppgift11()
+        {
+            var query = countries.OrderBy(c => c.Population).Take(5);
+            Console.WriteLine("Countries where name and capital starts with same letter:");
+            foreach (var country in query)
+            {
+                Console.WriteLine(country.Name + " " + country.Population);
+            }
+        }
+
+        public void Uppgift12()
+        {
+            
+            
+        }
     }
 }
