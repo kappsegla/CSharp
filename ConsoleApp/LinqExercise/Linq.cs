@@ -61,6 +61,8 @@ namespace ConsoleApp.LinqExercise
             //Uppgift13();
             //Uppgift14();
             Uppgift15();
+            Uppgift16a();
+            Uppgift16b();
         }
 
         //Skriv ut namnet på det första och det sista landet i listan på konsolen.
@@ -241,5 +243,36 @@ namespace ConsoleApp.LinqExercise
                 }
             }
         }
+
+        //Skriv ut namnet och befolkningsmängden för alla länder, men räkna om befolkningsmängden till faktiska tal.
+        //Alltså ska till exempel 1.5 miljoner skrivas ut som 1500000.
+        //Skulle kunna göra liknande som i 16b.
+        public void Uppgift16a()
+        {
+            foreach (var country in countries)
+            {
+                Console.WriteLine($"{country.Name} - {(country.Population * 1000000):0}");
+            }
+        }
+
+        //Skriv ut namnet på alla länder och hur trångbodda de är.
+        //Trångboddheten räknar du ut genom att ta befolkningsmängden delat med arean. Räkna om befolkningsmängden till faktiska tal som i 16a först.
+        public void Uppgift16b()
+        {
+            var query = countries.Select(c => new {c.Name, Dencity = (c.Population * 1000000) / c.Area})
+                .OrderBy(c => c.Dencity);
+            
+            
+            foreach (var country in query)
+            {
+                Console.WriteLine($"{country.Name} - {country.Dencity:0.00}");
+            }
+        }
+        
+
+        
+        
+        
+        
     }
 }
