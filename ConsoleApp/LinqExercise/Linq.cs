@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.VisualBasic;
 
 namespace ConsoleApp.LinqExercise
 {
@@ -60,9 +61,12 @@ namespace ConsoleApp.LinqExercise
             //Uppgift12();
             //Uppgift13();
             //Uppgift14();
-            Uppgift15();
-            Uppgift16a();
-            Uppgift16b();
+            // Uppgift15();
+            // Uppgift16a();
+            // Uppgift16b();
+            //Uppgift17();
+            Uppgift18();
+            Uppgift19();
         }
 
         //Skriv ut namnet på det första och det sista landet i listan på konsolen.
@@ -261,18 +265,68 @@ namespace ConsoleApp.LinqExercise
         {
             var query = countries.Select(c => new {c.Name, Dencity = (c.Population * 1000000) / c.Area})
                 .OrderBy(c => c.Dencity);
-            
-            
+
+
             foreach (var country in query)
             {
                 Console.WriteLine($"{country.Name} - {country.Dencity:0.00}");
             }
         }
-        
 
+        //Skriv ut namnet på alla länder, sorterat fallande efter deras huvudstäders namn baklänges.
+        //Till exempel kommer Tyskland före Niue, eftersom Alofi → ifola kommer före Berlin → nilreB.
+        //Tips: new string(s.Reverse().ToArray())
+        public void Uppgift17()
+        {
+            var query =
+                countries.Select(c => new
+                    {
+                        c.Name,
+                        ReversedCapital = new String(c.Capital.Reverse().ToArray())
+                    })
+                    .OrderByDescending(c => c.ReversedCapital);
+
+            foreach (var country in query)
+            {
+                Console.WriteLine($"{country.Name} - {country.ReversedCapital}");
+            }
+        }
+
+        //Skriv ut hur stor befolkning de 6 minsta länderna har tillsammans.
+        //Skriv också ut hur stor befolkning de 3 största länderna har tillsammans.
+        public void Uppgift18()
+        {
+            //We could make 2 different linq queries but then we have to iterate twice over the collection
+            var sumOf6Smallest = countries.OrderBy(c => c.Population).Take(6).Sum(c => c.Population);
+            var sumOf3Biggest = countries.OrderBy(c => c.Population).TakeLast(3).Sum(c => c.Population);
         
-        
-        
-        
+            Console.WriteLine(sumOf6Smallest);
+            Console.WriteLine(sumOf3Biggest);
+            
+            //If using Linq to SQL or Entity Framework, another solution with grouping should work, but inefficient for Collection
+            //https://stackoverflow.com/questions/8172839/how-to-get-two-sums-from-a-linq-query
+                        
+            //The following code creates two sums in one query by creating a group for all the entries so we can iterate
+            //over them individually to create two sums.
+            var query = countries
+                .OrderBy(c => c.Population)
+                .GroupBy(c => 1)
+                .Select(g => new {
+                    Sum1 = g.Take(6).Sum(c => c.Population),
+                    Sum2 = g.TakeLast(3).Sum(c => c.Population)
+                }).First();
+            
+            Console.WriteLine(query.Sum1);
+            Console.WriteLine(query.Sum2);
+        }
+
+        //Skriv ut hur stor befolkning alla länder vars namn är 7 tecken långt har tillsammans.
+        public void Uppgift19()
+        {
+            var sum =
+                countries.Where(c => c.Name.Length == 7).Sum(c => c.Population);
+                
+            Console.WriteLine($"Total population for all countries with 7 letters long names: {sum}");
+        }
     }
 }
