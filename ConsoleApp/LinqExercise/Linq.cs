@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualBasic;
 
 namespace ConsoleApp.LinqExercise
 {
@@ -79,7 +78,10 @@ namespace ConsoleApp.LinqExercise
         //Skriv ut namnen på alla länder i listan, sorterade i bokstavsordning.
         public void Uppgift3()
         {
-            var query = countries.OrderBy(c => c.Name);
+            var query = from c in countries
+                orderby c.Name
+                select c;
+            //var query = countries.OrderBy(c => c.Name);
 
             Console.WriteLine("Sorted on Name.");
             foreach (var country in query)
