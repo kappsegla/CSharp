@@ -35,8 +35,10 @@ namespace ConsoleApp
             
             //new LinqExercise.Linq().Run();
             
-            //new FileHandling().Run();
-            Exercise3.Program.Run();
+            //Exercise3.Program.Run();
+            
+            new FileHandling().Run();
+            
         }
 
         private static void StackExample()
