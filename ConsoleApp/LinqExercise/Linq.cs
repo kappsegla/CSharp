@@ -330,5 +330,14 @@ namespace ConsoleApp.LinqExercise
                 
             Console.WriteLine($"Total population for all countries with 7 letters long names: {sum}");
         }
+        
+        
+        //Extra. Get second item in list, and second item from end
+        public void Extra1()
+        {
+            //First will return null if less than 2 items in list. Then use FirstOrDefault
+            var secondCountry = countries.Skip(1).First();
+            var secondFromEnd = countries.Reverse().Skip(1).First();
+        }
     }
 }
