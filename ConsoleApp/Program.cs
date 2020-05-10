@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using ConsoleApp.Animals;
 using ConsoleApp.Classes;
 using ConsoleApp.Exercise2;
+using ConsoleApp.Files;
 using ConsoleApp.Generics;
 using ConsoleApp.Inheritance;
 using ConsoleApp.Linq;
@@ -32,9 +33,10 @@ namespace ConsoleApp
 
             //StackExample();
             
-            // var demo = new LinqDemo();
-            // demo.Run();
-            new LinqExercise.Linq().Run();
+            //new LinqExercise.Linq().Run();
+            
+            //new FileHandling().Run();
+            Exercise3.Program.Run();
         }
 
         private static void StackExample()
