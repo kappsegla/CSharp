@@ -13,7 +13,7 @@ namespace ConsoleApp.Files
         {
             //Get Users Home Directory
             var path = GetUserHomePath();
-
+            
             var programPath = Path.Combine(path, ".DemoApp2020");
 
             //Check if folder exists
@@ -22,30 +22,49 @@ namespace ConsoleApp.Files
                 //CreateDirectory creates all directories in path if they doesn't exist so can be run without checking first.
                 Directory.CreateDirectory(programPath);
             }
-
+            
             var filePath = Path.Combine(programPath, "File.txt");
-
+            
             Console.WriteLine(filePath);
 
-            // ReadTextFileAndPrintToConsole(filePath);
+            //ReadTextFileAndPrintToConsole(filePath);
+            
+            //AppendLineToTextFile(filePath, Environment.NewLine + "Some new text...");
+            
+            //ReadTextFileUsingFileStream(filePath);
+            
+            //var filePathBinary = Path.Combine(programPath, "File.dat");
+            
+            //WriteBinaryValueToFile(filePathBinary, 1234);
             //
-            // AppendLineToTextFile(filePath, Environment.NewLine + "Some new text...");
-            //
-            // ReadTextFileUsingFileStream(filePath);
-            //
-            // var filePathBinary = Path.Combine(programPath, "File.dat");
-            //
-            // WriteBinaryValueToFile(filePathBinary, 1234);
-            //
-            // DownloadAndPrintFileFromGitHub();
+            
+            //DownloadAndPrintFileFromGitHub();
+            
             //
             // var icoPath = Path.Combine(programPath, "image.bmp");
             //
             // LoadIcoFileAndPrintAsHex(icoPath);
             //
-            // var csvPath = Path.Combine(programPath, "data.csv");
+             var csvPath = Path.Combine(programPath, "data.csv");
+             //LoadPersonsFromCSV(csvPath);
+
+             LoadCSVFile(csvPath);
+        }
+
+        private void LoadPersonsFromCSV(string csvPath)
+        {
+            //File.AppendAllText(csvPath, "Kalle,10,Stockholm");
+            
+            // var persons = File.ReadLines(csvPath).Skip(1)
+            //     .Select(s => s.Split(","))
+            //     .Select(sa => new Person() {Name = sa[0], Age = Int32.Parse(sa[1]), City = sa[2]})
+            //     .ToList();
             //
-            // LoadCSVFile(csvPath);
+            // foreach (var person in persons)
+            // {
+            //     Console.WriteLine(person);
+            // }
+
         }
 
         public string GetUserHomePath()
@@ -84,9 +103,9 @@ namespace ConsoleApp.Files
 
             using FileStream fs = File.OpenRead(filePath);
             using StreamReader sr = new StreamReader(fs); //Can also use , to declare multiple variables with one using.
-
+            
             string line;
-
+                
             while ((line = sr.ReadLine()) != null)
             {
                 Console.WriteLine(line);
@@ -108,7 +127,9 @@ namespace ConsoleApp.Files
                 new BinaryWriter(File.Open(filePath, FileMode.Create));
 
             // Write int   
-            binWriter.Write(value);
+            binWriter.Write(1234);
+            binWriter.Write(0);
+            binWriter.Write(true);
         }
 
         //Load binary file
