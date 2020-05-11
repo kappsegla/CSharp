@@ -28,7 +28,7 @@ namespace ConsoleApp.Files
             }
         }
 
-        public IEnumerable<T> LoadFromJson<T>(string filePath)
+        public static IEnumerable<T> LoadFromJson<T>(string filePath)
         {
             var jsonString = File.ReadAllText(filePath);
             
@@ -36,7 +36,7 @@ namespace ConsoleApp.Files
             return records;
         }
         
-        public void SaveToJson<T>(string filePath, IEnumerable<T> records)
+        public static void SaveToJson<T>(string filePath, IEnumerable<T> records)
         {
             var jsonString = JsonSerializer.SerializeToUtf8Bytes(records);
             File.WriteAllBytes(filePath, jsonString);
