@@ -27,27 +27,25 @@ namespace ConsoleApp.Files
 
             Console.WriteLine(filePath);
 
-            ReadTextFileAndPrintToConsole(filePath);
-
-            AppendLineToTextFile(filePath, Environment.NewLine + "Some new text...");
-
-            ReadTextFileUsingFileStream(filePath);
-
-            var filePathBinary = Path.Combine(programPath, "File.dat");
-
-            WriteBinaryValueToFile(filePathBinary, 1234);
-
-            DownloadAndPrintFileFromGitHub();
-
-            var icoPath = Path.Combine(programPath, "image.bmp");
-
-            LoadIcoFileAndPrintAsHex(icoPath);
-
-            var csvPath = Path.Combine(programPath, "data.csv");
-
-            LoadCSVFile(csvPath);
-
-            // Console.ReadKey();
+            // ReadTextFileAndPrintToConsole(filePath);
+            //
+            // AppendLineToTextFile(filePath, Environment.NewLine + "Some new text...");
+            //
+            // ReadTextFileUsingFileStream(filePath);
+            //
+            // var filePathBinary = Path.Combine(programPath, "File.dat");
+            //
+            // WriteBinaryValueToFile(filePathBinary, 1234);
+            //
+            // DownloadAndPrintFileFromGitHub();
+            //
+            // var icoPath = Path.Combine(programPath, "image.bmp");
+            //
+            // LoadIcoFileAndPrintAsHex(icoPath);
+            //
+            // var csvPath = Path.Combine(programPath, "data.csv");
+            //
+            // LoadCSVFile(csvPath);
         }
 
         public string GetUserHomePath()
@@ -120,8 +118,9 @@ namespace ConsoleApp.Files
 
             int c;
             int i = 0;
-
+            
             //Ignore headers and image info for now
+            //Could use Seek to move
             //https://itnext.io/bits-to-bitmaps-a-simple-walkthrough-of-bmp-image-format-765dc6857393
             for (int j = 0; j < 54; j++)
                 fs.ReadByte();
