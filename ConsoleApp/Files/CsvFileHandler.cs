@@ -8,7 +8,7 @@ using CsvHelper;
 
 namespace ConsoleApp.Files
 {
-    public class CsvLoader
+    public class CsvFileHandler
     {
         public void Run()
         {

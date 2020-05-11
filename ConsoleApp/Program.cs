@@ -38,7 +38,7 @@ namespace ConsoleApp
             //Exercise3.Program.Run();
             
             //new FileHandling().Run();
-            new CsvLoader().Run();
+            new CsvFileHandler().Run();
         }
 
         private static void StackExample()
