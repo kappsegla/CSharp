@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using ConsoleApp.Animals;
 using CsvHelper;
 
 namespace ConsoleApp.Files
@@ -16,23 +17,21 @@ namespace ConsoleApp.Files
                 new Person() {Name = "Martin", Age = 42, City = "Kalmar"},
                 new Person() {Name = "Anna", Age = 30, City = "Göteborg"}
             };
-
+            
             var path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             var programPath = Path.Combine(path, ".DemoApp2020");
             var csvPath = Path.Combine(programPath, "Test.csv");
             
             LoadFromCsvFile(csvPath);
-            
             SaveToCsvFile(csvPath, persons);
-            
-
         }
-
-        private void SaveToCsvFile(string csvPath, List<Person> persons)
+        
+        //Generic Method that can take an IEnumerable of any datatype T.
+        private void SaveToCsvFile<T>(string csvPath, IEnumerable<T> records)
         {
-            
-            
-            
+            using var writer = new StreamWriter(csvPath);
+            using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
+            csv.WriteRecords(records);
         }
 
 
