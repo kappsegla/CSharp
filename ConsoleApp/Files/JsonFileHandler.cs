@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.Json;
 
 namespace ConsoleApp.Files
 {
@@ -15,28 +16,30 @@ namespace ConsoleApp.Files
             };
             var path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             var programPath = Path.Combine(path, ".DemoApp2020");
-            var csvPath = Path.Combine(programPath, "Persons.json");
+            var jsonPath = Path.Combine(programPath, "Persons.json");
            
-            SaveToJson(csvPath, persons);
+            SaveToJson(jsonPath, persons);
 
-            var records = LoadFromJson<Person>(csvPath);
+           var records = LoadFromJson<Person>(jsonPath);
             
             foreach (var person in records)
             {
                 Console.WriteLine(person);
             }
-            
-            
         }
 
         public IEnumerable<T> LoadFromJson<T>(string filePath)
         {
-            return null;
+            var jsonString = File.ReadAllText(filePath);
+            
+            var records = JsonSerializer.Deserialize<List<T>>(jsonString);
+            return records;
         }
         
         public void SaveToJson<T>(string filePath, IEnumerable<T> records)
         {
-            
+            var jsonString = JsonSerializer.SerializeToUtf8Bytes(records);
+            File.WriteAllBytes(filePath, jsonString);
         }
     }
 }
