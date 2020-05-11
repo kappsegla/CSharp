@@ -67,7 +67,7 @@ namespace ConsoleApp.Files
 
         }
 
-        public string GetUserHomePath()
+        public static string GetUserHomePath()
         {
             return
                 Environment.GetFolderPath(Environment.SpecialFolder.UserProfile,
