@@ -23,9 +23,16 @@ namespace ConsoleApp.Files
             
             LoadFromCsvFile(csvPath);
             
-            
+            SaveToCsvFile(csvPath, persons);
             
 
+        }
+
+        private void SaveToCsvFile(string csvPath, List<Person> persons)
+        {
+            
+            
+            
         }
 
 
@@ -45,13 +52,5 @@ namespace ConsoleApp.Files
                 Console.WriteLine(person);
             }
         }
-        
-        
-        
-        public void SaveToCsvFile()
-        {
-            
-        }
-        
     }
 }

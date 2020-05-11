@@ -1,4 +1,6 @@
-﻿namespace ConsoleApp.Files
+﻿using CsvHelper.Configuration.Attributes;
+
+namespace ConsoleApp.Files
 {
     public class Person
     {
