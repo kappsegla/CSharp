@@ -8,7 +8,9 @@ using ConsoleApp.Files;
 using ConsoleApp.Generics;
 using ConsoleApp.Inheritance;
 using ConsoleApp.Linq;
+using ConsoleApp.Regexes;
 using ConsoleApp.Shapes;
+using ConsoleApp.TextSearch;
 using Circle = ConsoleApp.Inheritance.Circle;
 using Cylinder = ConsoleApp.Inheritance.Cylinder;
 using Point = ConsoleApp.Generics.Point;
@@ -39,7 +41,11 @@ namespace ConsoleApp
             
             //new FileHandling().Run();
             //new CsvFileHandler().Run();
-            new JsonFileHandler().Run();
+           // new JsonFileHandler().Run();
+           //new LuceneExample().Run();
+           //new ExactMatchExample().Run();
+           
+           new RegexExamples().Run();
         }
 
         private static void StackExample()
