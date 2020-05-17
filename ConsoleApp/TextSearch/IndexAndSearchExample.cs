@@ -5,17 +5,10 @@ using System.Text.RegularExpressions;
 
 namespace ConsoleApp.TextSearch
 {
-    public class ExactMatchExample
+    public class IndexAndSearchExample
     {
         public void Run()
         {
-    //        var s = "This is a string";
-    //        s.Contains("this", StringComparison.CurrentCultureIgnoreCase).Dump("Contains");
-            // s.Equals("This is a string");
-            //
-            // s.StartsWith("This");
-            // s.EndsWith("g");
-            //
             var list = new List<string>()
             {
                 "My sister is coming for the holidays.",
@@ -25,7 +18,7 @@ namespace ConsoleApp.TextSearch
                 "My sister makes awesome fudge."
             };
 
-            //Build index
+            //Build index, no stopwords used in this example. Should exclude common words like is, the, a, an....
             var pattern = new Regex("[.,;?!\t\r\n]");
 
             var allWords = list.Select((s) => pattern.Replace(s, "").ToLower()
@@ -34,14 +27,15 @@ namespace ConsoleApp.TextSearch
                 .OrderBy(k => k.s1)
                 .ToLookup(arg => arg.s1, arg => arg.i);
 
-            // foreach (var h in allWords)
-            // {
-            //     h.Key.Dump();
-            //     h.ToList().ForEach(Console.WriteLine);
-            //     "--".Dump();
-            // }
+            //List our index
+            foreach (var h in allWords)
+            {
+                h.Key.Dump();
+                h.ToList().ForEach(Console.WriteLine);
+                "--".Dump();
+            }
 
-            // //Exact Search
+            // Search for strings containing an exact term. 
             // var searchTerm = "fudge";
             //
             // foreach (var o in allWords[searchTerm])
@@ -50,34 +44,41 @@ namespace ConsoleApp.TextSearch
             // }
 
             "-------------".Dump();
-            
+
             // if (term.Text.Length > 1.0f / (1.0f - minimumSimilarity))
             // {
             //     this.termLongEnough = true;
             // }
-            
-            var stringDist = new JaroWinklerDistance();
+//////////////////////////////////////////////////////////////////////////
+            //Fuzzy Searching
+
+            //var stringDist = new JaroWinklerDistance();
+            var stringDist = new LevenshteinDistance();
 
             //Fuzzy Search
-            var searchResult = allWords.Select(key => new {d = stringDist.GetDistance(key.Key,"sister"), key})
+            var searchResult = allWords.Select(key => new {d = stringDist.GetDistance(key.Key, "sister"), key})
                 .OrderByDescending(j => j.d);
-            
+
             foreach (var o in searchResult.Where(d => d.d > 0.5))
             {
                 o.d.Dump("Match");
                 o.key.Key.Dump("Key");
                 o.key.ToList().ForEach(Console.WriteLine);
             }
-            
-            var result = list.Select(key => new {d = stringDist.GetDistance(key,"sister"), key})
-                .OrderByDescending(j => j.d);
-            
-            foreach (var o in result)
-            {
-                o.d.Dump("Match");
-                o.key.Dump("Key");
-            }
+//////////////////////////////////////////////////////////////////////////
 
+            // var result = list.Select(key => new {d = stringDist.GetDistance(key,"sister"), key})
+            //     .OrderByDescending(j => j.d);
+            //
+            // foreach (var o in result)
+            // {
+            //     o.d.Dump("Match");
+            //     o.key.Dump("Key");
+            // }
+
+            
+            //How well does different wrongly spelled names match using our selected distance method
+            
             //https://www.joyofdata.de/blog/comparison-of-string-distance-algorithms/
             var kramer = new List<string>()
             {
@@ -105,7 +106,7 @@ namespace ConsoleApp.TextSearch
             foreach (var cosmo in kramer)
             {
                 cosmo.Dump();
-                stringDist.GetDistance("Cosmo Kramer",cosmo).Dump();
+                stringDist.GetDistance("Cosmo Kramer", cosmo).Dump();
             }
         }
     }

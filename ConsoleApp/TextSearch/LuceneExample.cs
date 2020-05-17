@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Lucene.Net.Analysis.Standard;
 using Lucene.Net.Documents;
@@ -17,7 +18,10 @@ namespace ConsoleApp.TextSearch
             // Ensures index backwards compatibility
             var AppLuceneVersion = LuceneVersion.LUCENE_48;
 
-            var indexLocation = @"C:\Users\Martin\.DemoApp2020\Index";
+
+            var indexLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile,
+                Environment.SpecialFolderOption.DoNotVerify), ".DemoApp2020", "Index");
+
             var dir = FSDirectory.Open(indexLocation);
 
             //create an analyzer to process the text
@@ -28,9 +32,6 @@ namespace ConsoleApp.TextSearch
             indexConfig.OpenMode = OpenMode.CREATE;
             var writer = new IndexWriter(dir, indexConfig);
 
-//////            
-            /////
-            
             // var source = new
             // {
             //     Name = "Kermit the Frog",
@@ -54,33 +55,32 @@ namespace ConsoleApp.TextSearch
                 "It takes an hour to make fudge.",
                 "My sister makes awesome fudge."
             };
-           
+
             list.ForEach(s =>
             {
                 Document doc = new Document
                 {
-                    new TextField("body", 
-                        s,         
+                    new TextField("body",
+                        s,
                         Field.Store.YES)
                 };
                 writer.AddDocument(doc);
-                
             });
-            
             writer.Flush(triggerMerge: false, applyAllDeletes: false);
- 
+
             /////
-            
             // re-use the writer to get real-time updates
+            /////
             var searcher = new IndexSearcher(writer.GetReader(applyAllDeletes: true));
-            
+
             // search with a phrase
             // var phrase = new MultiPhraseQuery();
-            // phrase.Add(new Term("favoritePhrase", "brown"));
-            // phrase.Add(new Term("favoritePhrase", "fox"));
-            var phrase = new FuzzyQuery(new Term("body","sister"),1);
-            
-            
+            // phrase.Add(new Term("favoritePhrase", "sister"));
+            // phrase.Add(new Term("favoritePhrase", "fudge"));
+
+            //Fuzzy Search
+            var phrase = new FuzzyQuery(new Term("body", "sister"), 1);
+
             var hits = searcher.Search(phrase, 3 /* top 3 */).ScoreDocs;
             foreach (var hit in hits)
             {
@@ -89,22 +89,5 @@ namespace ConsoleApp.TextSearch
                 foundDoc.Get("body").Dump("Body");
             }
         }
-
-        
-    }
-    
-    public static class Dumper{
-        public static void Dump<T>(this T v,string s)
-        {
-            Console.WriteLine(s + " : " + v);
-        }
-        public static void Dump<T>(this T v)
-        {
-            Console.WriteLine(v);
-        }
-        // public static void Dump(this string v,string s)
-        // {
-        //     Console.WriteLine(s + " : " + v);
-        // }
     }
 }

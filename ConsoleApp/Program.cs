@@ -17,7 +17,7 @@ using Point = ConsoleApp.Generics.Point;
 
 namespace ConsoleApp
 {
-   class Program
+    class Program
     {
         static void Main(string[] args)
         {
@@ -34,27 +34,28 @@ namespace ConsoleApp
             //Point();
 
             //StackExample();
-            
+
             //new LinqExercise.Linq().Run();
-            
+
             //Exercise3.Program.Run();
-            
+
             //new FileHandling().Run();
             //new CsvFileHandler().Run();
-           // new JsonFileHandler().Run();
-           //new LuceneExample().Run();
-           //new ExactMatchExample().Run();
-           
-           new RegexExamples().Run();
+            // new JsonFileHandler().Run();
+
+
+            new RegexExamples().Run();
+            //new IndexAndSearchExample().Run();
+            //new LuceneExample().Run();
         }
 
         private static void StackExample()
         {
-            Generics.Stack<string> stack = new Generics.Stack<string>(); 
+            Generics.Stack<string> stack = new Generics.Stack<string>();
             stack.Push("1");
             stack.Push("2");
             stack.Push("3");
-            
+
             Console.WriteLine(stack.Pop());
             Console.WriteLine(stack.Pop());
             Console.WriteLine(stack.Pop());
@@ -63,18 +64,18 @@ namespace ConsoleApp
         private static void Point()
         {
             Point point1 = new Point() {X = 4.0, Y = 3.0};
-            
-            Point point2 = new Point(0.0,0.0);
+
+            Point point2 = new Point(0.0, 0.0);
 
             var distance = point1.DistanceTo(point2);
-            
+
             Console.WriteLine(distance);
-            
+
             //Create a new object, copy data from point1
             Point point3 = new Point(point1);
 
             //Create a new object that is a copy of point1s data
-            Point point4 = (Point)point1.Clone();
+            Point point4 = (Point) point1.Clone();
 
             //Copy data from point1 into our new point5
             Point point5 = new Point();
