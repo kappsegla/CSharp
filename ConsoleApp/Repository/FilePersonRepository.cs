@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using ConsoleApp.Files;
-using Lucene.Net.Util.Packed;
 
 namespace ConsoleApp.Repository
 {
