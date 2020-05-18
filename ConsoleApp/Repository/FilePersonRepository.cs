@@ -5,6 +5,13 @@ namespace ConsoleApp.Repository
 {
     public class FilePersonRepository : IPersonRepository
     {
+
+        public FilePersonRepository()
+        {
+            //Load file into memory..
+            
+        }
+        
         List<Person> persons = new List<Person>();
         
         public IEnumerable<Person> GetAll()
@@ -25,6 +32,11 @@ namespace ConsoleApp.Repository
         }
 
         public void Delete(Person person)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Insert(Person person)
         {
             throw new System.NotImplementedException();
         }

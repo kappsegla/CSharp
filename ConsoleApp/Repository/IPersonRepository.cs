@@ -8,6 +8,7 @@ namespace ConsoleApp.Repository
         IEnumerable<Person> GetAll();
         Person GetById(long id);
         void Delete(Person person);
+        void Insert(Person person);
         void Save();
         //Add more needed CRUD methods...
     }
