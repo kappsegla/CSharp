@@ -39,12 +39,14 @@ namespace ConsoleApp
 
             //Exercise3.Program.Run();
 
+            //2020-05-11
             //new FileHandling().Run();
             //new CsvFileHandler().Run();
             // new JsonFileHandler().Run();
 
-
-            new RegexExamples().Run();
+            //2020-05-18
+            new StringSearchExample().Run();
+            //new RegexExamples().Run();
             //new IndexAndSearchExample().Run();
             //new LuceneExample().Run();
         }
