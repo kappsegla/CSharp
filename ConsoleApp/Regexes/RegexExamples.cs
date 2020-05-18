@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Text.RegularExpressions;
 using ConsoleApp.TextSearch;
 
 namespace ConsoleApp.Regexes
@@ -19,23 +20,23 @@ namespace ConsoleApp.Regexes
         {
             //Find first occurence of exact match
             var exact = new Regex(@"Kalle");
-
+            
             exact.Match(text).Dump();
             "------".Dump();
-            
+          
             //Match a word beginning with a capital letter
             //Character classes or Character Set
             //gr[ae]y to match either gray or grey.
             var filter = new Regex(@"[A-Z]\w+");
 
-            filter.IsMatch(text).Dump();
-            
-            "-----".Dump();
-            
-            filter.Match(text).Dump();
-
-            "------".Dump();
-            
+            // filter.IsMatch(text).Dump();
+            //
+            // "-----".Dump();
+            //
+            // filter.Match(text).Dump();
+            //
+            // "------".Dump();
+            //
             foreach (Match match in filter.Matches(text))
             {
                 match.Value.Dump();
@@ -61,7 +62,7 @@ namespace ConsoleApp.Regexes
             
             //Replace regex
             var bfilter3 = new Regex("[A-Z]");
-            bfilter3.Replace(text, "X").Dump();
+           // bfilter3.Replace(text, "X").Dump();
             bfilter3.Replace(text, x => x.Value.ToLower()).Dump();
             
             "------".Dump();

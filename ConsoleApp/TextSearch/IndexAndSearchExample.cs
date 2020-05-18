@@ -28,37 +28,38 @@ namespace ConsoleApp.TextSearch
                 .ToLookup(arg => arg.s1, arg => arg.i);
 
             //List our index
-            foreach (var h in allWords)
-            {
-                h.Key.Dump();
-                h.ToList().ForEach(Console.WriteLine);
-                "--".Dump();
-            }
-
+            // foreach (var h in allWords)
+            // {
+            //     h.Key.Dump();
+            //     h.ToList().ForEach(Console.WriteLine);
+            //     "--".Dump();
+            // }
+            //
+            
             // Search for strings containing an exact term. 
-            // var searchTerm = "fudge";
+            // var searchTerm = "sister";
             //
             // foreach (var o in allWords[searchTerm])
             // {
             //     list[o].Dump();
             // }
-
-            "-------------".Dump();
-
+            //
+            // "-------------".Dump();
+            //
             // if (term.Text.Length > 1.0f / (1.0f - minimumSimilarity))
             // {
             //     this.termLongEnough = true;
             // }
 //////////////////////////////////////////////////////////////////////////
             //Fuzzy Searching
-
+            
             //var stringDist = new JaroWinklerDistance();
             var stringDist = new LevenshteinDistance();
 
             //Fuzzy Search
-            var searchResult = allWords.Select(key => new {d = stringDist.GetDistance(key.Key, "sister"), key})
+            var searchResult = allWords.Select(key => new {d = stringDist.GetDistance(key.Key, "saster"), key})
                 .OrderByDescending(j => j.d);
-
+            
             foreach (var o in searchResult.Where(d => d.d > 0.5))
             {
                 o.d.Dump("Match");
@@ -66,7 +67,6 @@ namespace ConsoleApp.TextSearch
                 o.key.ToList().ForEach(Console.WriteLine);
             }
 //////////////////////////////////////////////////////////////////////////
-
             // var result = list.Select(key => new {d = stringDist.GetDistance(key,"sister"), key})
             //     .OrderByDescending(j => j.d);
             //

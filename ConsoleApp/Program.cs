@@ -46,8 +46,8 @@ namespace ConsoleApp
 
             //2020-05-18
            // new StringSearchExample().Run();
-            new RegexExamples().Run();
-            //new IndexAndSearchExample().Run();
+            //new RegexExamples().Run();
+            new IndexAndSearchExample().Run();
             //new LuceneExample().Run();
         }
 
