@@ -26,7 +26,7 @@ namespace ConsoleApp.TextSearch
                 .SelectMany((strings, i) => strings.Select(s1 => new {s1, i}))
                 .OrderBy(k => k.s1)
                 .ToLookup(arg => arg.s1, arg => arg.i);
-
+            
             //List our index
             // foreach (var h in allWords)
             // {
@@ -35,15 +35,15 @@ namespace ConsoleApp.TextSearch
             //     "--".Dump();
             // }
             //
-            
+
             // Search for strings containing an exact term. 
-            // var searchTerm = "sister";
-            //
-            // foreach (var o in allWords[searchTerm])
-            // {
-            //     list[o].Dump();
-            // }
-            //
+            var searchTerm = "sister";
+
+            foreach (var o in allWords[searchTerm])
+            {
+                list[o].Dump();
+            }
+
             // "-------------".Dump();
             //
             // if (term.Text.Length > 1.0f / (1.0f - minimumSimilarity))
@@ -52,14 +52,14 @@ namespace ConsoleApp.TextSearch
             // }
 //////////////////////////////////////////////////////////////////////////
             //Fuzzy Searching
-            
+
             //var stringDist = new JaroWinklerDistance();
             var stringDist = new LevenshteinDistance();
 
             //Fuzzy Search
             var searchResult = allWords.Select(key => new {d = stringDist.GetDistance(key.Key, "saster"), key})
                 .OrderByDescending(j => j.d);
-            
+
             foreach (var o in searchResult.Where(d => d.d > 0.5))
             {
                 o.d.Dump("Match");
@@ -67,6 +67,7 @@ namespace ConsoleApp.TextSearch
                 o.key.ToList().ForEach(Console.WriteLine);
             }
 //////////////////////////////////////////////////////////////////////////
+
             // var result = list.Select(key => new {d = stringDist.GetDistance(key,"sister"), key})
             //     .OrderByDescending(j => j.d);
             //
@@ -76,9 +77,9 @@ namespace ConsoleApp.TextSearch
             //     o.key.Dump("Key");
             // }
 
-            
+
             //How well does different wrongly spelled names match using our selected distance method
-            
+
             //https://www.joyofdata.de/blog/comparison-of-string-distance-algorithms/
             var kramer = new List<string>()
             {

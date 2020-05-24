@@ -5,6 +5,7 @@ using ConsoleApp.Animals;
 using ConsoleApp.Classes;
 using ConsoleApp.Exercise2;
 using ConsoleApp.Files;
+using ConsoleApp.Functions;
 using ConsoleApp.Generics;
 using ConsoleApp.Inheritance;
 using ConsoleApp.Linq;
@@ -14,6 +15,7 @@ using ConsoleApp.TextSearch;
 using Circle = ConsoleApp.Inheritance.Circle;
 using Cylinder = ConsoleApp.Inheritance.Cylinder;
 using Point = ConsoleApp.Generics.Point;
+using Rectangle = ConsoleApp.Classes.Rectangle;
 
 namespace ConsoleApp
 {
@@ -47,8 +49,12 @@ namespace ConsoleApp
             //2020-05-18
            // new StringSearchExample().Run();
             //new RegexExamples().Run();
-            new IndexAndSearchExample().Run();
+            //new IndexAndSearchExample().Run();
             //new LuceneExample().Run();
+            
+            //2020-05-25
+            //new RecursionExamples().Run();
+            new Functions.Functions().Run();
         }
 
         private static void StackExample()
