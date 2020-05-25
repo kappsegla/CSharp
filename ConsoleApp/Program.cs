@@ -53,8 +53,8 @@ namespace ConsoleApp
             //new LuceneExample().Run();
             
             //2020-05-25
-            //new RecursionExamples().Run();
-            new Functions.Functions().Run();
+            new RecursionExamples().Run();
+            //new Functions.Functions().Run();
         }
 
         private static void StackExample()

@@ -112,7 +112,7 @@ namespace ConsoleApp.Files
             }
         }
 
-        private async void DownloadAndPrintFileFromGitHub()
+        private void DownloadAndPrintFileFromGitHub()
         {
             using var httpClient = new HttpClient();
             var url = "https://raw.githubusercontent.com/kappsegla/CSharp/master/ConsoleApp/Files/Data.txt";

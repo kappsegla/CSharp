@@ -80,7 +80,7 @@ namespace ConsoleApp.Exercise2
 
                     Console.Write("You must enter a number between 1-50: ");
                 }
-                catch (FormatException e)
+                catch (FormatException)
                 {
                     Console.Write("You must enter a number between 1-50: ");
                 }
