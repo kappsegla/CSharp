@@ -8,16 +8,16 @@ namespace ConsoleApp.Functions
     {
         public void Run()
         {
-            MethodA();
+           // MethodA();
 
             // var sumLoop = SumIntsLoop(3);
             // sumLoop.Dump();
             //
-            // var sumRecursively = SumIntsRecursive(300000);
+            // var sumRecursively = SumIntsRecursive(20000);
             // sumRecursively.Dump();
-            //
-            // var sumTailRecursive = SumIntsTailRecursive(3, 0);
-            // sumTailRecursive.Dump();
+            
+            var sumTailRecursive = SumIntsTailRecursive(int.MaxValue, 0);
+            sumTailRecursive.Dump();
         }
 
         [MethodImpl(MethodImplOptions.AggressiveOptimization)]
