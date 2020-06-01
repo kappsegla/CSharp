@@ -9,6 +9,7 @@ using ConsoleApp.Functions;
 using ConsoleApp.Generics;
 using ConsoleApp.Inheritance;
 using ConsoleApp.Linq;
+using ConsoleApp.Patterns;
 using ConsoleApp.Regexes;
 using ConsoleApp.Shapes;
 using ConsoleApp.TextSearch;
@@ -54,7 +55,8 @@ namespace ConsoleApp
             
             //2020-05-25
             //new RecursionExamples().Run();
-            new Functions.Functions().Run();
+            //new Functions.Functions().Run();
+            new PatternExamples().Run();
         }
 
         private static void StackExample()
