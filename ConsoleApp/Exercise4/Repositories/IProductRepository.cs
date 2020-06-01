@@ -11,4 +11,13 @@ namespace ConsoleApp.Exercise4.Repositories
         void Insert(Product person);
         void Save();
     }
+    
+    public interface IRepository<T>
+    {
+        IEnumerable<T> GetAll();
+        T GetById(long id);
+        void Delete(T person);
+        void Insert(T person);
+        void Save();
+    }
 }

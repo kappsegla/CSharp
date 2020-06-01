@@ -56,7 +56,8 @@ namespace ConsoleApp
             //2020-05-25
             //new RecursionExamples().Run();
             //new Functions.Functions().Run();
-            new PatternExamples().Run();
+            //new PatternExamples().Run();
+            Exercise4.Program.Run();
         }
 
         private static void StackExample()
