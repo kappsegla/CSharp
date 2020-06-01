@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using ConsoleApp.Exercise4.Models;
 
 namespace ConsoleApp.Exercise4.Repositories
@@ -22,22 +23,24 @@ namespace ConsoleApp.Exercise4.Repositories
 
         public Product GetById(long id)
         {
-            
+            return _products.First(p => p.Id == id);
         }
 
         public void Delete(Product person)
         {
-            throw new System.NotImplementedException();
+            _products.Remove(person);
+            Save();
         }
 
         public void Insert(Product person)
         {
-            throw new System.NotImplementedException();
+            _products.Add(person);
+            Save();
         }
 
         public void Save()
         {
-            throw new System.NotImplementedException();
+            //Save _products to file
         }
     }
 }
