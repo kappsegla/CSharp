@@ -48,35 +48,48 @@
         // }
     }
 
-    public class HouseBuilder
+    public class HouseBuilder : IDoorHouseBuilder, IRoomsHouseBuilder,
+        IWindowsHouseBuilder, IFinalHouseBuilder
     {
         House _house = new House();
 
-        public HouseBuilder Rooms(int rooms)
+        private HouseBuilder(){}
+
+        public static IRoomsHouseBuilder GetBuilder()
+        {
+            return new HouseBuilder();
+        }
+        
+        public IDoorHouseBuilder Rooms(int rooms)
         {
             _house.Rooms = rooms;
             return this;
         }
 
-        public HouseBuilder Doors(int doors)
+        public IFinalHouseBuilder CreateBungalow()
+        {
+            return Rooms(1).Doors(1).Windows(1);
+        }
+
+        public IWindowsHouseBuilder Doors(int doors)
         {
             _house.Doors = doors;
             return this;
         }
 
-        public HouseBuilder Windows(int windows)
+        public IFinalHouseBuilder Windows(int windows)
         {
             _house.Windows = windows;
             return this;
         }
 
-        public HouseBuilder HasGarage()
+        public IFinalHouseBuilder HasGarage()
         {
             _house.HasGarage = true;
             return this;
         }
 
-        public HouseBuilder HasPool()
+        public IFinalHouseBuilder HasPool()
         {
             _house.HasSwimmingPool = true;
             return this;
@@ -88,9 +101,29 @@
         }
     }
 
-    interface DoorBuilder
+    public interface IRoomsHouseBuilder
     {
-        
+        IDoorHouseBuilder Rooms(int rooms);
+        IFinalHouseBuilder CreateBungalow();
     }
-    
+
+    public interface IDoorHouseBuilder
+    {
+        IWindowsHouseBuilder Doors(int doors);
+    }
+
+    public interface IWindowsHouseBuilder
+    {
+        IFinalHouseBuilder Windows(int windows);
+    }
+
+    public interface IFinalHouseBuilder
+    {
+        IFinalHouseBuilder HasGarage();
+        IFinalHouseBuilder HasPool();
+        House Build();
+
+    }
+
+
 }
