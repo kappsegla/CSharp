@@ -1,8 +1,4 @@
-﻿using System;
-using ConsoleApp.Exercise4.Models;
-using J2N.Collections.Generic;
-
-namespace ConsoleApp.TestExample
+﻿namespace ConsoleApp.TestExample
 {
     public class Calculator
     {

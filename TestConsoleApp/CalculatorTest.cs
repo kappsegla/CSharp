@@ -3,6 +3,7 @@ using Xunit;
 
 namespace TestConsoleApp
 {
+    
     public class CalculatorTest
     {
         [Fact]
