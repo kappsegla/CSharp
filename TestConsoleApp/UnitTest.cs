@@ -7,8 +7,9 @@ namespace TestConsoleApp
     public class UnitTest1
     {
         [Fact]
-        public void Test1()
+        public void ThisIsOurFirstSimpleTestThatShouldPass()
         {
+            Assert.True( true );
         }
     }
 }
