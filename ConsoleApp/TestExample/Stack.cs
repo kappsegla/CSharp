@@ -14,7 +14,7 @@ namespace ConsoleApp.TestExample
         {
             if( Count() == 0)
                 throw new System.InvalidOperationException();
-            T temp = elementsList[^1];
+            T temp = Peek();
             elementsList.RemoveAt(elementsList.Count-1);
             return temp;
         }
