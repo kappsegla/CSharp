@@ -29,4 +29,8 @@
         <PackageReference Include="Lucene.Net.Analysis.Common" Version="4.8.0-beta00008" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Exercise4\Helpers" />
+    </ItemGroup>
+
 </Project>

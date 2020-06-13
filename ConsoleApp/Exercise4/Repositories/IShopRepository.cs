@@ -2,7 +2,7 @@
 
 namespace ConsoleApp.Exercise4.Repositories
 {
-    public interface IProductRepository : IRepository<Product>
+    public interface IShopRepository : IRepository<Shop>
     {
         
     }
