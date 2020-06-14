@@ -27,10 +27,7 @@
         <PackageReference Include="CsvHelper" Version="15.0.5" />
         <PackageReference Include="Lucene.Net" Version="4.8.0-beta00008" />
         <PackageReference Include="Lucene.Net.Analysis.Common" Version="4.8.0-beta00008" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Exercise4\Helpers" />
+        <PackageReference Include="MongoDB.Driver" Version="2.11.0-beta2" />
     </ItemGroup>
 
 </Project>

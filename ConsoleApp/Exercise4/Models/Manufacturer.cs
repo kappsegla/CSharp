@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace ConsoleApp.Exercise4.Models
 {
-    public class Producer
+    public class Manufacturer
     {
         public string Name { get; set; }
     }

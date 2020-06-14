@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 
-namespace ConsoleApp.Exercise4.Files
+namespace ConsoleApp.Exercise4.Helpers
 {
-    public class FileHandler
+    public static class FileHelper
     {
         public static IEnumerable<T> LoadFromJson<T>(string filePath)
         {

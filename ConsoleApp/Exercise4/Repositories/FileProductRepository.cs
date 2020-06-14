@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using ConsoleApp.Exercise4.Files;
 using ConsoleApp.Exercise4.Models;
+using ConsoleApp.Exercise4.Helpers;
 
 namespace ConsoleApp.Exercise4.Repositories
 {
@@ -12,8 +12,8 @@ namespace ConsoleApp.Exercise4.Repositories
 
         public FileProductRepository()
         {
-            var path = Path.Combine(FileHandler.GetUserHomePath(), ".DemoApp2020", "products.json");
-            _products = File.Exists(path) ? FileHandler.LoadFromJson<Product>("").ToList() : new List<Product>();
+            var path = Path.Combine(FileHelper.GetUserHomePath(), ".DemoApp2020", "products.json");
+            _products = File.Exists(path) ? FileHelper.LoadFromJson<Product>(path).ToList() : new List<Product>();
         }
 
         public IEnumerable<Product> GetAll()
@@ -21,7 +21,7 @@ namespace ConsoleApp.Exercise4.Repositories
             return _products;
         }
 
-        public Product GetById(long id)
+        public Product GetById(string id)
         {
             return _products.FirstOrDefault(p => p.Id == id);
         }
@@ -40,8 +40,8 @@ namespace ConsoleApp.Exercise4.Repositories
 
         public void Save()
         {
-            var path = Path.Combine(FileHandler.GetUserHomePath(), ".DemoApp2020", "products.json");
-            FileHandler.SaveToJson(path, _products);
+            var path = Path.Combine(FileHelper.GetUserHomePath(), ".DemoApp2020", "products.json");
+            FileHelper.SaveToJson(path, _products);
         }
     }
 }
