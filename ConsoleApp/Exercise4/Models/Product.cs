@@ -18,7 +18,10 @@ namespace ConsoleApp.Exercise4.Models
         {
             Shops.Remove(shop);
         }
-        
+        public void AddShop(Shop shop)
+        {
+            Shops.Add(shop);
+        }
         
     }
 }

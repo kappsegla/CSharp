@@ -22,11 +22,6 @@ namespace ConsoleApp.Exercise4
             
             var shop = new Shop(){Id="1",Name="Ica Maxi"};
             var shop1 = new Shop(){Id="2",Name="Coop"};
-            // var product = new Product();
-            // product.Manufacturer =  manufacturerService.GetManufacturer(1);
-            // product.Name = "Mjölk";
-            // product.Price = (decimal) 14.95;
-            // product.Shops.Add(shop);
 
             //Create new product
             var product = ConsoleHelper.NewProduct();
@@ -34,14 +29,12 @@ namespace ConsoleApp.Exercise4
             shopRepository.Insert(shop);
             shopRepository.Insert(shop1);
             
-            product.Shops.Add(shop);
-            product.Shops.Add(shop1);
-            
+            product.AddShop(shop);
+            product.AddShop(shop1);
             
             //Insert new product into repository
             productRepository.Insert(product);
-            
-         
+
             
             PrintList("Products for each Manufacturer",productFilter.ListOfManufacturersWithProductCount());
             PrintList("Products costing less than 20",productFilter.ProductsCostingLessThan(20));
