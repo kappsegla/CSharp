@@ -28,15 +28,15 @@ namespace ConsoleApp.Exercise4.Repositories
             return _collection.Find(Builders<Product>.Filter.Eq(x => x.Id, id)).FirstOrDefault();
         }
 
-        public void Delete(Product person)
+        public void Delete(Product product)
         {
             //Builders<Product>.Filter.Eq(x => x.Id, id)
-            _collection.DeleteOne(s => s.Id == person.Id);
+            _collection.DeleteOne(s => s.Id == product.Id);
         }
 
-        public void Insert(Product person)
+        public void Insert(Product product)
         {
-            _collection.InsertOne(person);
+            _collection.InsertOne(product);
         }
 
         public void Save()

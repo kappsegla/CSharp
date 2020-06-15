@@ -6,8 +6,8 @@ namespace ConsoleApp.Exercise4.Repositories
     {
         IEnumerable<T> GetAll();
         T GetById(string id);
-        void Delete(T person);
-        void Insert(T person);
+        void Delete(T product);
+        void Insert(T product);
         void Save();
     }
 }

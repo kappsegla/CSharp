@@ -26,15 +26,15 @@ namespace ConsoleApp.Exercise4.Repositories
             return _shops.FirstOrDefault(s => s.Id == id);
         }
 
-        public void Delete(Shop shop)
+        public void Delete(Shop product)
         {
-            _shops.Remove(shop);
+            _shops.Remove(product);
             Save();
         }
 
-        public void Insert(Shop shop)
+        public void Insert(Shop product)
         {
-            _shops.Add(shop);
+            _shops.Add(product);
             Save();
         }
 

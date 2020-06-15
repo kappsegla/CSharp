@@ -22,6 +22,10 @@ namespace ConsoleApp.Exercise4.Models
         {
             Shops.Add(shop);
         }
-        
+
+        public override string ToString()
+        {
+            return Name + " " + Manufacturer + " " + Price;
+        }
     }
 }
