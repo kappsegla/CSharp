@@ -6,15 +6,11 @@ namespace ConsoleApp.Exercise4.Repositories
 {
     public class MongoDbProductRepository : IProductRepository
     {
-        private MongoClient _client;
-        private IMongoDatabase _database;
         private IMongoCollection<Product> _collection;
 
-        public MongoDbProductRepository()
+        public MongoDbProductRepository(IMongoCollection<Product> collection)
         {
-            _client = new MongoClient("mongodb://192.168.1.109:27017");
-            _database = _client.GetDatabase("Warehouse");
-            _collection = _database.GetCollection<Product>("Products");
+            _collection = collection;
         }
 
         public IEnumerable<Product> GetAll()
