@@ -34,6 +34,16 @@ namespace ConsoleApp.Exercise4.Repositories
         {
             _collection.InsertOne(product);
         }
+        
+        //Update method, needed for MongoDB implementation
+        //Not part of IRepository at the moment.
+        //This code will actually replace an existing document with the new data.
+        //All fields will be overwritten. Use UpdateOne to change just part of object.
+        public void Update(Product product)
+        {
+            _collection.ReplaceOne(p => p.Id == product.Id, product);
+        }
+        
 
         public void Save()
         {
