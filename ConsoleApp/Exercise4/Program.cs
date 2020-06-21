@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ConsoleApp.Exercise4.Entities;
 using ConsoleApp.Exercise4.Filters;
 using ConsoleApp.Exercise4.Helpers;
 using ConsoleApp.Exercise4.Models;
 using ConsoleApp.Exercise4.Repositories;
 using MongoDB.Driver;
 using Microsoft.Extensions.Configuration;
+using Product = ConsoleApp.Exercise4.Models.Product;
+using Shop = ConsoleApp.Exercise4.Models.Shop;
 
 //https://garywoodfine.com/configuration-api-net-core-console-application/
 namespace ConsoleApp.Exercise4
@@ -25,6 +28,11 @@ namespace ConsoleApp.Exercise4
         //public static void Main(string[] args)
         public static void Run()
         {
+            
+            var context = new WareHouseContext();
+
+            PrintList("",context.Products.ToList());
+            
             //Read configuration file
             //Change connection string for database in file appsettings.json or appsettings.dev.json for a special developer
             //database.
