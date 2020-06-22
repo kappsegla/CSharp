@@ -38,52 +38,53 @@ namespace ConsoleApp.Exercise4
                 .Build();
             
             var mongoConnectionString = configuration["ConnectionStrings:DefaultConnection"];
-            
-            var context = new WareHouseContext();
-            context.Products.Add(new Entities.Product());
-            context.SaveChanges();
-            
-            PrintList("",context.Products.ToList());
-            
+
+            //Using Entity Framework as ORM for accessing Relational database.
+            // var context = new WareHouseContext();
+            //
+            // context.Products.Add(new Entities.Product());
+            // context.SaveChanges();
+            //
+            // PrintList("",context.Products);
+            //
             
             
             //Composition Root. Create all objects we need.
-            // var _client = new MongoClient(mongoConnectionString);
-            // var _database = _client.GetDatabase("Warehouse");
-            // var _collection = _database.GetCollection<Product>("Products");
-            //
-            // IProductRepository
-            //     productRepository = new MongoDbProductRepository(_collection); //new FileProductRepository();
-            // IShopRepository shopRepository = new FileShopRepository();
-            // ManufacturerService manufacturerService = new ManufacturerService();
-            //
-            // ProductFilter productFilter = new ProductFilter(productRepository, shopRepository);
-            //
-            // var shop = new Shop() {Id = "1", Name = "Ica Maxi"};
-            // var shop1 = new Shop() {Id = "2", Name = "Coop"};
-            //
-            // //Create new product
-            // var product = ConsoleHelper.NewProduct();
-            // //Add shops to product
-            // shopRepository.Insert(shop);
-            // shopRepository.Insert(shop1);
-            //
-            // product.AddShop(shop);
-            // product.AddShop(shop1);
-            //
-            // //Insert new product into repository
-            // productRepository.Insert(product);
-            //
-            // PrintList("Products for each Manufacturer", productFilter.ListOfManufacturersWithProductCount());
-            // PrintList("Products costing less than 20", productFilter.ProductsCostingLessThan(20));
+             var _client = new MongoClient(mongoConnectionString);
+             var _database = _client.GetDatabase("Warehouse");
+             var _collection = _database.GetCollection<Product>("Products");
+            
+             IProductRepository productRepository = new MongoDbProductRepository(_collection); //new FileProductRepository();
+             IShopRepository shopRepository = new FileShopRepository();
+             ManufacturerService manufacturerService = new ManufacturerService();
+            
+             ProductFilter productFilter = new ProductFilter(productRepository, shopRepository);
+            
+             var shop = new Shop() {Id = "1", Name = "Ica Maxi"};
+             var shop1 = new Shop() {Id = "2", Name = "Coop"};
+            
+             //Create new product
+             var product = ConsoleHelper.NewProduct();
+             //Add shops to product
+             shopRepository.Insert(shop);
+             shopRepository.Insert(shop1);
+            
+             product.AddShop(shop);
+             product.AddShop(shop1);
+            
+             //Insert new product into repository
+             productRepository.Insert(product);
+            
+             PrintList("Products for each Manufacturer", productFilter.ListOfManufacturersWithProductCount());
+             PrintList("Products costing less than 20", productFilter.ProductsCostingLessThan(20));
 
-            //Do some changes
-            // PrintList("All products", productRepository.GetAll().Select(p => p.Price));
-            //
-            // product.Price = (decimal) 123.45;
-            // ((MongoDbProductRepository) productRepository).Update(product);
-            //
-            // PrintList("All products", productRepository.GetAll().Select(p => p.Price));
+             //Do some changes
+             PrintList("All products", productRepository.GetAll().Select(p => p.Price));
+            
+             product.Price = (decimal) 123.45;
+             ((MongoDbProductRepository) productRepository).Update(product);
+            
+             PrintList("All products", productRepository.GetAll().Select(p => p.Price));
         }
     }
 }

@@ -42,4 +42,8 @@
       <None Remove="appsettings.dev.json" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Concurrent" />
+    </ItemGroup>
+
 </Project>
