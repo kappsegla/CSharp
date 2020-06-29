@@ -3,8 +3,7 @@ using Xunit;
 
 namespace TestConsoleApp
 {
-    
-    public class CalculatorTest
+     public class CalculatorTest
     {
         [Fact]
         void ChangeSomethingIncrementsValueByOne()

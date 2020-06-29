@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using ConsoleApp.Animals;
 using ConsoleApp.Classes;
 using ConsoleApp.Exercise2;
@@ -22,6 +23,7 @@ namespace ConsoleApp
 {
     class Program
     {
+        //static async Task Main(string[] args)
         static void Main(string[] args)
         {
             //Uncomment the code you want to try
@@ -57,7 +59,10 @@ namespace ConsoleApp
             //new RecursionExamples().Run();
             //new Functions.Functions().Run();
             //new PatternExamples().Run();
-            Exercise4.Program.Run();
+            //Exercise4.Program.Run();
+            
+            //2020-06-29
+            new Concurrent.Concurrent().Run();
         }
 
         private static void StackExample()

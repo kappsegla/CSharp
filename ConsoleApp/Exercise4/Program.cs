@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ConsoleApp.Exercise4.Entities;
 using ConsoleApp.Exercise4.Filters;
 using ConsoleApp.Exercise4.Helpers;
 using ConsoleApp.Exercise4.Models;
